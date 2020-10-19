@@ -1,0 +1,73 @@
+.card-details {
+    width: 290px;
+    height: 221px;
+    box-shadow: 0px 3px 6px #00000029;
+    border-radius: 10px;
+    background-color: white;
+    .card-blue {
+        background: #001cb0;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+        min-height: 75px;
+        img {
+            width: 33px;
+            height: 24px;
+        }
+        p {
+            color: white;
+        }
+        .daily-button {
+            margin: 0px;
+            background: white;
+            padding: 0px 2px;
+            border-radius: 4px;
+            color: black;
+            font-size: 11px;
+            text-align: center;
+        }
+        .type-box {
+            position: absolute;
+            bottom: 51%;
+            font-size: 13px;
+            background: #00dfed;
+            padding: 1px 9px;
+            color: black;
+            border-top-left-radius: 12px;
+            border-bottom-right-radius: 12px;
+        }
+    }
+}
+
+.color-blue {
+    color: #001cb0;
+}
+.color-purple {
+    color: #6e68a3;
+}
+
+.font-weight-700 {
+    font-weight: 700;
+}
+.font-20px {
+    font-size: 20px;
+}
+
+.font-13px {
+    font-size: 13px;
+}
+
+.modal.show .modal-dialog {
+    max-width: 320px !important;
+}
+
+.top-card {
+    background: transparent linear-gradient(97deg, #001cb0 0%, #00dfed 100%) 0% 0% no-repeat padding-box;
+    border-radius: 10px;
+    .logo-top {
+        height: 65px;
+    }
+    p{
+        color: white;
+        font-size: 22px;
+    }
+}

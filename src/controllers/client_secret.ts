@@ -1,0 +1,13 @@
+export const web = {
+  "type": "service_account",
+  "project_id": "feisty-vector-292909",
+  "private_key_id": "604cab8cf9563ecb112c045ba9ca1d349727b609",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCbmgnc/+0sz/36\neb5riU+d+wKDmfyjzMO7VuVmVr4tw7sFYWyWEowzZWjzl7mqE2ujhx6X8HhSEUiM\nKLzQxagU2XPNpMsReIdiyBIMQxsKJXQDdLvmTGvzvfE7JScx9Js+d+70EqeyqG/d\nGjiRDZDpM6tMBY4avs38Veu6n6D17a5fx7vwH3RLwCvRSvTFT5gRvjpXXV6gLpsO\nvSDEV/UZzb2Ge6GCCWrWu+N1foNWshTGxKeQ8ru+DU9cfH1M5XAcwiEaE/Ui56zj\nfKee2XSmIr1HmFuKog+KTjGZ9qpK8RrOcz0xkWCZvIt4m/TzyUOFkupY7dC1566E\n02ilkMhPAgMBAAECggEAK/SwW5t6kyGwhBz3M2anNKAvfiC2c0lJc7cg96+Caugz\ngVobtCtKKsy3gLS4ULjKu/fUJyTZwIk8Xse1Sx7DFBy3r3yhlu5fBIMzQf6E+XFK\nHB3SZMTq7ACY0FX3BBAu+M8llBJfCEO30hRxrVxRNuePONsK4ThMdT+KZ35nmIEa\n0fsw3YS4XX6s2P5+4eaICP9Rp8NEdd9lrsqhMZ6eu45msW1drfuej5UTI8SHVwKG\nVkOV4ID5w8wzRZtHRsDKvgAjCvF4WwvudVdUyOly74vKobKRCMe00TC24Td7oy+o\nv8wyBKldUQOUi72U9pp8xNuHKb/FL10z/KQC0PwL+QKBgQDRJL1NFMysMVp7Ls83\nXWePs47bOcCgQyFx5L23p78NA4RVKEiEQjPeCjiujDshI1+YOB6UCb8u9+0Rs+Wl\n/2UOa3QIktO3JqIQAJs1WN5E54U/iFvuHUdEAFejBWagVEQDiw4FK5pvpeMPGw48\nsIQJUTIGv7iH1E+ym6ls3E22xwKBgQC+dnOWmEO3ylH3hTLHiwXsGMBDc78TJz4h\niRKuBNKzos8zlv8O57g6R2ztV0gHOilyqph+2BMyOBoEdLFn3xQ95TrcXp4wzOoy\nkV52F+dmrqstn04W1UDG3dd/taP5QBqyiR9gn6CILKmLTw2tznKHYSC8JOIVhCW2\nrWvWulY6OQKBgEe7gCoF7kVJEC2b2nq00KZbAa5zWnwdSkVUHTX2lPKTuDm0/VpP\nkpafjt1fP5CYH1uINAS2axpi8q7VsviCZljRxhSCt5bj60Xtz0420tVzSyKFVHKR\nHDZYn7ZMTezDuig083QWhnuwu/YcY3+xUzgW3z+tVk9QJJ2wAiZSUV1VAoGAcZ7I\nJbZ/70xKyZY0TMWqqsW5LIQIIKzwa6ER+6305CTj5qrVTVb+mAWz/YJr/aO8xiLv\nBfxwtyywmKfkjUqPEL2G95+aTxJvQ+tkpp5r9N2OUJEQTJ67HeeJfy4ku7R6OLeE\neGfBpHrASdLHHkBiIlDW7mYyWROUS/34rwhKGEECgYEAzHK1jK7eD7ptWkorA+A4\nI3BMZwlJkm1im1XilRsRFEKgF/O3cIxvWyNpZuiAg2Kc6VK7sKqcKA29hdvMlk+F\nbvk3qMjqMl4H9tGQ7QpUkNzoT4dFkm4AjoB+m1XvxfgfrAcF5AA1zCbyo1D3Qh6g\n93reiqaPPfz+F7fBvs0UOUE=\n-----END PRIVATE KEY-----\n",
+  "client_email": "sheets@feisty-vector-292909.iam.gserviceaccount.com",
+  "client_id": "101049834173745075461",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/sheets%40feisty-vector-292909.iam.gserviceaccount.com"
+
+} 

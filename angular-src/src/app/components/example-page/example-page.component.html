@@ -1,0 +1,65 @@
+<div class="container-fluid p-0 d-flex">
+    <app-sidebar></app-sidebar>
+    <div class="container-fluid p-0">
+        <div class="container-fluid">
+            <div class="top-card">
+                <div class="row w-100 mx-auto d-flex p-4">
+                    <p class="my-auto">C & I Customer Report</p>
+                    <img class="ml-auto logo-top" src="../../../assets/logo.png">
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid my-3">
+            <ul class="nav">
+                <li class="nav-item">
+                    <button type="button" class="btn btn-transparent" (click)="goBack()">Back</button>
+                </li>
+                <li class="nav-item">
+                    <button type="button" class="btn btn-transparent" (click)="selectedItem('1')"
+                        [ngClass]="{'border-bottom-custom': selectedTab === '1'}">C & I Customer Report</button>
+                </li>
+                <li class="nav-item">
+                    <button type="button" class="btn btn-transparent" (click)="selectedItem('2')"
+                        [ngClass]="{'border-bottom-custom': selectedTab === '2'}">Customer Channel & Marketing</button>
+                </li>
+                <li class="nav-item">
+                    <button type="button" class="btn btn-transparent" (click)="selectedItem('3')"
+                        [ngClass]="{'border-bottom-custom': selectedTab === '3'}">Customer Experience &
+                        Advocacy</button>
+                </li>
+                <li class="nav-item">
+                    <button type="button" class="btn btn-transparent" (click)="selectedItem('4')"
+                        [ngClass]="{'border-bottom-custom': selectedTab === '4'}">Customer Market Operations</button>
+                </li>
+                <li class="nav-item">
+                    <button type="button" class="btn btn-transparent" (click)="selectedItem('5')"
+                        [ngClass]="{'border-bottom-custom': selectedTab === '5'}">Product & Portfolio</button>
+                </li>
+            </ul>
+        </div>
+        <div class="container-fluid my-2">
+            <div class="row mx-auto w-100">
+                <div class="card card-details mx-auto my-2" *ngFor="let cardItem of cardData">
+                    <div class="row card-blue d-flex w-100 mx-auto p-2">
+                        <p class="w-75 my-auto">{{cardItem.name}}</p>
+                        <span class="ml-auto d-flex">
+                            <img class="my-auto" src="../../../assets/chart.png">
+                        </span>
+                        <p class="type-box">
+                            {{cardItem.type}}
+                        </p>
+                    </div>
+                    <div class="row mx-auto w-100 my-auto">
+                        <p class="p-2 font-13px text-center my-3">Reports & Insights that gives 360 degree view of their
+                            business, enabling to search and explore data to make informed decision.</p>
+                    </div>
+                    <div class="row mx-auto w-100 my-auto">
+                        <div class="col-12 d-flex my-1">
+                            <button class="btn btn-blue ml-auto" (click)="goToReports()">Access Report</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

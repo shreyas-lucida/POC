@@ -1,0 +1,82 @@
+
+<div class="container-fluid p-0 d-flex">
+    <app-sidebar></app-sidebar>
+  
+    <div class="container-fluid p-0">
+        <div class="container-fluid">
+            <div class="top-card">
+                <div class="row w-100 mx-auto d-flex p-4">
+                    <p class="my-auto">C & I Customer Report</p>
+                    <img class="ml-auto logo-top" src="../../../assets/logo.png">
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid">
+            <div class="row mx-auto w-100">
+                <button type="button" class="btn btn-transparent mr-3" (click)="goBack()">Back</button>
+                <button type="button" class="btn btn-transparent border-bottom-custom">C & I Customer Report</button>
+            </div>
+        </div>
+
+        <div class="container-fluid">
+            <div class="row mx-auto w-100">
+                <div class="card card-details mx-1 mx-1 my-2" *ngFor="let cardItem of cardData">
+                    <div class="row card-blue d-flex w-100 mx-auto p-2">
+                        <p class="w-75 my-auto">{{cardItem.name}}</p>
+                        <span class="ml-auto">
+                            <p class="daily-button mb-2">Daily</p>
+                            <img src="../../../assets/chart.png">
+                        </span>
+                        <p class="type-box">
+                            {{cardItem.type}}
+                        </p>
+                    </div>
+                    <div class="row mx-auto w-100 my-auto">
+                        <div class="col-12 d-flex my-1">
+                            <button type="button" class="btn btn-grey ml-auto" data-toggle="modal"
+                                data-target="#myModal" (click)="selectedCard(cardItem)">Find out more</button>
+                        </div>
+                        <div class="col-12 d-flex my-1">
+                            <button class="btn btn-blue ml-auto">Access Report</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="myModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content" *ngIf="selectedItem">
+            <div class="modal-body">
+                <div class="row card-blue d-flex w-100 mx-auto p-2">
+                    <p class="w-75 color-blue font-weight-700 font-20px my-auto">{{selectedItem.name}}</p>
+                    <span class="ml-auto">
+                        <img src="../../../assets/chart.png">
+                    </span>
+                </div>
+                <hr>
+                <div class="row mx-auto w-100 d-block my-1">
+                    <p class="color-purple mb-1">Refresh Frequency</p>
+                    <p class="font-13px">Daily</p>
+                </div>
+                <div class="row mx-auto w-100 d-block my-1">
+                    <p class="color-purple mb-1">Description</p>
+                    <p class="font-13px">{{selectedItem.description}}</p>
+                </div>
+                <div class="row mx-auto w-100 d-block my-1">
+                    <p class="color-purple mb-1">Report Owner</p>
+                    <p class="font-13px">{{selectedItem.reportowner}}</p>
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-border" data-dismiss="modal">Back</button>
+                <button type="button" class="btn btn-border" data-dismiss="modal">Access Report</button>
+
+            </div>
+        </div>
+
+    </div>
+</div>

@@ -1,0 +1,84 @@
+.sidepanel  {
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    background-color: white;
+    overflow-x: hidden;
+    transition: 0.3s;
+    padding-top: 60px;
+    box-shadow: 0px 3px 32px #00000029;
+  }
+  
+  .sidepanel a {
+    text-decoration: none;
+    display: block;
+    transition: 0.3s;
+  }
+  
+  .sidepanel .closebtn {
+    position: absolute;
+    top: 0;
+    font-size: 36px;
+  }
+  .isSideBarOpen {
+      width: 380px;
+      padding: 100px 1rem 1rem 1rem;
+  }
+  .userName {
+      font-weight: bold;
+      font-size: 28px;
+  }
+
+  .notify {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 0.5rem 0.7rem 0.7rem 0.7rem;
+    margin: 1rem;
+    cursor: pointer;
+    background: #F7F8FA;
+    border-radius: 50%;
+  }
+
+  .open-panal-btn {
+    margin: 1rem 0rem;
+    align-items: center;
+    text-align: center;
+      cursor: pointer;
+      i{
+        color: #001CB0;
+      }
+  }
+
+  .user-bio {
+    font-size: 12px;
+    color: #7F8FA4;
+  }
+
+
+  .sidenav {
+    height: 100vh;
+    width: 74px;
+    background-color: #ffffff;
+    overflow-x: hidden;
+    padding-top: 20px;
+    box-shadow: 0px 3px 6px #0000000F;
+  }
+
+  .sidebarIcon {
+    margin: 3rem 0rem;
+    align-items: center;
+    text-align: center;
+    cursor: pointer;
+    color: #c9dae0;
+    font-size: 20px;
+
+  }
+  
+  .active {
+      color: orange;
+    border-right: 4px solid orange;
+  }
