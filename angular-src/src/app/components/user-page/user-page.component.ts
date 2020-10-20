@@ -35,7 +35,7 @@ export class UserPageComponent implements OnInit {
   pocTest(): void {
     this.apiService.testPOC().subscribe(data => {
       if (data.status === 'ok') {
-        this.cardData = data.data['card'];
+        this.cardData = data.data['card'][0];
         console.log(this.cardData);
       }
     })

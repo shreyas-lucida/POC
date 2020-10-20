@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
 import { Router } from '@angular/router';
+import { ApiService } from '../../core/services/api.service';
 
 @Component({
   selector: 'app-example-page',
@@ -10,109 +11,29 @@ import { Router } from '@angular/router';
 export class ExamplePageComponent implements OnInit {
   selectedTab = '1';
   cardData: any[];
+  selectedCardData: any;
   constructor(private _location: Location,
-    private router: Router) {
+    private router: Router,
+    private apiService: ApiService) {
   }
   ngOnInit(): void {
-    this.selectedItem('1');
+    this.pocTest();
   }
 
+  pocTest(): void {
+    this.apiService.testPOC().subscribe(data => {
+      if (data.status === 'ok') {
+        this.cardData = data.data['card'][1];
+        console.log(this.cardData);
+        this.selectedItem('1');
+      }
+    })
+  };
+
   selectedItem(input) {
-    if (input === '1') {
-      this.cardData = [
-        {
-          name: 'Business Energy Solution',
-          type: 'Connections & Billing'
-        },
-        {
-          name: 'Commercial & Strategic Energy Sales',
-          type: 'Connections & Billing'
-        },
-        {
-          name: 'Commercial Operations & Strategy',
-          type: 'Connections & Billing'
-        },
-        {
-          name: 'Perth Energy',
-          type: 'Connections & Billing'
-        }
-      ];
-    } else if (input === '2') {
-      this.cardData = [
-        {
-          name: 'Channel Strategy & Marketing',
-          type: 'Connections & Billing'
-        },
-        {
-          name: 'Customer Solutions',
-          type: 'Connections & Billing'
-        },
-        {
-          name: 'Digital Sales & Service',
-          type: 'Connections & Billing'
-        },
-        {
-          name: 'perth Energy',
-          type: 'Connections & Billing'
-        }
-      ];
-    } else if (input === '3') {
-      this.cardData = [
-        {
-          name: 'Brand',
-          type: 'Connections & Billing'
-        },
-        {
-          name: 'Customer Experience Delivery',
-          type: 'Connections & Billing'
-        },
-        {
-          name: 'Customer Policy',
-          type: 'Connections & Billing'
-        },
-        {
-          name: 'Customer Strategy & Insights',
-          type: 'Connections & Billing'
-        }
-      ];
-    } else if (input === '4') {
-      this.cardData = [
-        {
-          name: 'Compliance, Risk & Assurance',
-          type: 'Connections & Billing'
-        },
-        {
-          name: 'Connection & Billing',
-          type: 'Connections & Billing'
-        },
-        {
-          name: 'Credit & Affordability',
-          type: 'Connections & Billing'
-        },
-        {
-          name: 'Customer Engagement & Performance',
-          type: 'Connections & Billing'
-        }
-      ];
-    } else if (input === '5') {
-      this.cardData = [
-        {
-          name: 'Customer Pricing',
-          type: 'Connections & Billing'
-        },
-        {
-          name: 'Emerging Products',
-          type: 'Connections & Billing'
-        },
-        {
-          name: 'Product & Proposition',
-          type: 'Connections & Billing'
-        },
-        {
-          name: 'Product Strategy & Loyalty',
-          type: 'Connections & Billing'
-        }
-      ];
+    if (input) {
+      this.selectedCardData = this.cardData[input].subcategory.split(',');
+     console.log(this.selectedCardData)
     }
     this.selectedTab = input;
   }

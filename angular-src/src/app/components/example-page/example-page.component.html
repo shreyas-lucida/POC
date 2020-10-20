@@ -11,42 +11,23 @@
         </div>
         <div class="container-fluid my-3">
             <ul class="nav">
-                <li class="nav-item">
-                    <button type="button" class="btn btn-transparent" (click)="goBack()">Back</button>
+                <li class="nav-item" *ngFor="let item of cardData; index as i">
+                    <button type="button" class="btn btn-transparent" (click)="selectedItem(i)"
+                        [ngClass]="{'border-bottom-custom': selectedTab === i }">{{item.category}}</button>
                 </li>
-                <li class="nav-item">
-                    <button type="button" class="btn btn-transparent" (click)="selectedItem('1')"
-                        [ngClass]="{'border-bottom-custom': selectedTab === '1'}">C & I Customer Report</button>
-                </li>
-                <li class="nav-item">
-                    <button type="button" class="btn btn-transparent" (click)="selectedItem('2')"
-                        [ngClass]="{'border-bottom-custom': selectedTab === '2'}">Customer Channel & Marketing</button>
-                </li>
-                <li class="nav-item">
-                    <button type="button" class="btn btn-transparent" (click)="selectedItem('3')"
-                        [ngClass]="{'border-bottom-custom': selectedTab === '3'}">Customer Experience &
-                        Advocacy</button>
-                </li>
-                <li class="nav-item">
-                    <button type="button" class="btn btn-transparent" (click)="selectedItem('4')"
-                        [ngClass]="{'border-bottom-custom': selectedTab === '4'}">Customer Market Operations</button>
-                </li>
-                <li class="nav-item">
-                    <button type="button" class="btn btn-transparent" (click)="selectedItem('5')"
-                        [ngClass]="{'border-bottom-custom': selectedTab === '5'}">Product & Portfolio</button>
-                </li>
+                
             </ul>
         </div>
         <div class="container-fluid my-2">
             <div class="row mx-auto w-100">
-                <div class="card card-details mx-auto my-2" *ngFor="let cardItem of cardData">
+                <div class="card card-details mx-auto my-2" *ngFor="let item of selectedCardData; index as i">
                     <div class="row card-blue d-flex w-100 mx-auto p-2">
-                        <p class="w-75 my-auto">{{cardItem.name}}</p>
+                        <p class="w-75 my-auto">{{item}}</p>
                         <span class="ml-auto d-flex">
                             <img class="my-auto" src="../../../assets/chart.png">
                         </span>
                         <p class="type-box">
-                            {{cardItem.type}}
+                            Connection & Billing
                         </p>
                     </div>
                     <div class="row mx-auto w-100 my-auto">

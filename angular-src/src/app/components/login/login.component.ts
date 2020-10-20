@@ -23,13 +23,11 @@ export class LoginComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.authSubscription = this.authService.userChanged.subscribe((user) => {
-      console.log(user);
       if (user) {
         this.toastService.success(
           `Login successfully`,
           `You are now logged in`
         );
-        console.log(user.firstName.toString())
         sessionStorage.setItem("user", user.firstName);
         this.router.navigateByUrl('/home-page');
       }

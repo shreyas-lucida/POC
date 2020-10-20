@@ -36,10 +36,19 @@ export class ApiController {
     await promisify(doc.useServiceAccountAuth)(web);
     const info = await promisify(doc.getInfo)();
     const sheet = info.worksheets[0];
+    const configSheet = info.worksheets[1];
+
     const rows = await promisify(sheet.getRows)({
         offset: 1
     });
-    return rows
+    const config = await promisify(configSheet.getRows)({
+      offset: 1
+  });
+    let rowsArray = [];
+    rowsArray.push(rows);
+    rowsArray.push(config);
+  console.log('================', rowsArray)
+    return rowsArray
   }
 
 

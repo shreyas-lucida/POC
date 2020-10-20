@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
 import { Router } from '@angular/router';
+import { ApiService } from '../../core/services/api.service';
 
 @Component({
   selector: 'app-home-page',
@@ -11,11 +12,22 @@ export class HomePageComponent implements OnInit {
   selectedTab = '1';
   cardData: any[];
   constructor(private _location: Location,
-    private router: Router) {
+    private router: Router,
+    private apiService: ApiService) {
   }
   ngOnInit(): void {
     this.selectedItem('1');
+    this.pocTest();
   }
+
+  pocTest(): void {
+    this.apiService.testPOC().subscribe(data => {
+      if (data.status === 'ok') {
+        this.cardData = data.data['card'][1];
+        console.log(this.cardData);
+      }
+    })
+  };
 
   selectedItem(input) {
     if (input === '1') {
