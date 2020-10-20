@@ -12,6 +12,7 @@ export class ExamplePageComponent implements OnInit {
   selectedTab = '1';
   cardData: any[];
   selectedCardData: any;
+  displayHeading = '';
   constructor(private _location: Location,
     private router: Router,
     private apiService: ApiService) {
@@ -24,18 +25,15 @@ export class ExamplePageComponent implements OnInit {
     this.apiService.testPOC().subscribe(data => {
       if (data.status === 'ok') {
         this.cardData = data.data['card'][1];
-        console.log(this.cardData);
-        this.selectedItem('1');
+        this.selectedItem('0');
       }
     })
   };
 
   selectedItem(input) {
-    if (input) {
-      this.selectedCardData = this.cardData[input].subcategory.split(',');
-     console.log(this.selectedCardData)
-    }
-    this.selectedTab = input;
+      this.selectedCardData = this.cardData[input]['subcategory'].split(',');
+      this.displayHeading = this.cardData[input]['category'];
+      this.selectedTab = input;
   }
 
   goToReports() {

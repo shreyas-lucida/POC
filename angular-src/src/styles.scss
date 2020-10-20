@@ -10,7 +10,14 @@ body {
     font-family: "Roboto", "Arial", "sans-serif";
 }
 
+@font-face {
+    font-family: "titillium";
+    src: local("titillium"), url(./assets/titillium/TitilliumWeb-Regular.ttf) format("truetype");
+}
+
 * {
+    font-family: "titillium", Arial, Helvetica, sans-serif;
+
     ::-webkit-scrollbar {
         width: 5px;
         height: 4px;
@@ -42,8 +49,6 @@ body {
     height: 100%;
     margin: 0 auto -84px;
 }
-
-
 
 .toast {
     font-size: 0.85rem;
@@ -82,7 +87,7 @@ body {
     border-radius: 7px;
 }
 
-.btn-white-border{
+.btn-white-border {
     background: transparent;
     color: white;
     border: 1px solid white;
@@ -95,17 +100,17 @@ body {
     }
 }
 
-.btn-transparent{
+.btn-transparent {
     background: transparent;
     color: #001cb0;
     font-size: 13px;
 }
 
-.border-bottom-custom{
-    border-bottom: 3px solid #F6A623;
+.border-bottom-custom {
+    border-bottom: 3px solid #f6a623;
     border-radius: 0;
 }
 
-.btn{
-    box-shadow: none!important;
+.btn {
+    box-shadow: none !important;
 }

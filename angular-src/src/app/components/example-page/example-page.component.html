@@ -4,7 +4,7 @@
         <div class="container-fluid">
             <div class="top-card">
                 <div class="row w-100 mx-auto d-flex p-4">
-                    <p class="my-auto">C & I Customer Report</p>
+                    <p class="my-auto">{{displayHeading}}</p>
                     <img class="ml-auto logo-top" src="../../../assets/logo.png">
                 </div>
             </div>
@@ -20,7 +20,7 @@
         </div>
         <div class="container-fluid my-2">
             <div class="row mx-auto w-100">
-                <div class="card card-details mx-auto my-2" *ngFor="let item of selectedCardData; index as i">
+                <div class="card card-details mx-2 my-2" *ngFor="let item of selectedCardData; index as i">
                     <div class="row card-blue d-flex w-100 mx-auto p-2">
                         <p class="w-75 my-auto">{{item}}</p>
                         <span class="ml-auto d-flex">
