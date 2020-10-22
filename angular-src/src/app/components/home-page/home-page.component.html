@@ -12,14 +12,13 @@
        
         <div class="container-fluid my-2">
             <div class="row mx-auto w-100">
-                <div class="card card-details my-2 mr-auto" *ngFor="let cardItem of cardData;let i = index" (click)="goToReports()">
+                <div class="card card-details my-2 mx-2" *ngFor="let cardItem of cardData;let i = index" (click)="goToReports()">
                     <div class="row card-blue d-block w-100 mx-auto p-2">
                         <i class="fa fa-users fa-3x text-center my-2 mx-auto d-block mb-3" aria-hidden="true"></i>
                         <p class="my-auto text-center mb-2">{{cardItem.category}}</p>
                     </div>
                     <div class="row mx-auto w-100">
-                        <p class="p-2 font-13px text-center my-3">Reports & Insights that gives 360 degree view of their
-                            business, enabling to search and explore data to make informed decision.</p>
+                        <p class="p-2 font-13px text-center my-3">{{cardItem.categorydescription}}</p>
                     </div>
                 </div>
             </div>
