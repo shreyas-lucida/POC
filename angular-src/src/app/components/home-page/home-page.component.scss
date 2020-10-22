@@ -1,6 +1,6 @@
 .card-details {
-    width: 218px;
-    height: 327px;
+    width: 230px;
+    height: 350px;
     box-shadow: 0px 3px 6px #00000029;
     border-radius: 10px;
     background-color: white;
@@ -8,14 +8,15 @@
         background: #001cb0;
         border-top-left-radius: 10px;
         border-top-right-radius: 10px;
-        min-height: 160px;
+        min-height: 170px;
         i{
             color: white
         }
         p {
             color: white;
             font-size: 18px;
-            font-weight: 400;
+            font-weight: 600;
+            letter-spacing: 0.75px;
         }
         .daily-button {
             margin: 0px;
@@ -67,15 +68,18 @@
 .top-card {
     height: 210px;
     background: transparent linear-gradient(97deg, #00dfed 0%, #001cb0 100%) 0% 0% no-repeat padding-box;
-    border-radius: 10px;
+    border-radius: 20px;
     .logo-top {
         height: 104px;
         width: 109px;
+        margin-right: 2.5rem;
+        margin-top: -8px;
     }
-    p{
+    span{
         color: white;
-        margin-top: 30px;
         font-size: 46px;
         font-weight: 300;
+        top: 5rem;
+        position: absolute;
     }
 }

@@ -3,23 +3,28 @@
     <div class="container-fluid p-0 px-5">
         <div class="container-fluid my-3">
             <div class="top-card">
-                <div class="row w-100 mx-auto d-flex p-5">
-                    <img class="mr-4 logo-top" src="../../../assets/logo.png">
-                    <p class="">Customer Market 3D</p>
+                <div class="row w-100 mx-auto d-flex  ">
+                    <div class="col-6 py-5 pl-4">
+                        <img class="logo-top" src="../../../assets/logo.png">
+                        <span class="">Customer Market 3 D</span>
+                    </div>
+                    <div class="col-6">
+                        <img class="float-right pt-3" src="../../../assets/headerImg.png">
+                    </div>
                 </div>
             </div>
         </div>
        
         <div class="container-fluid my-2">
-            <div class="row mx-auto w-100">
-                <div class="card card-details my-2 mr-auto" *ngFor="let cardItem of cardData;let i = index" (click)="goToReports()">
+            <div class="row mx-auto w-100 my-5">
+                <div class="card card-details my-2 mx-2" *ngFor="let cardItem of cardData;let i = index" (click)="goToReports()"
+                >
                     <div class="row card-blue d-block w-100 mx-auto p-2">
-                        <i class="fa fa-users fa-3x text-center my-2 mx-auto d-block mb-3" aria-hidden="true"></i>
+                        <i class="fa fa-users fa-2x text-center mx-auto d-block mb-3 mt-4" aria-hidden="true"></i>
                         <p class="my-auto text-center mb-2">{{cardItem.category}}</p>
                     </div>
                     <div class="row mx-auto w-100">
-                        <p class="p-2 font-13px text-center my-3">Reports & Insights that gives 360 degree view of their
-                            business, enabling to search and explore data to make informed decision.</p>
+                        <p class="p-2 font-13px text-center my-3">{{cardItem.categorydescription}}</p>
                     </div>
                 </div>
             </div>

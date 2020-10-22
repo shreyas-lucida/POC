@@ -28,7 +28,6 @@ show;
     @Inject(APP_ID) private appId: string
   ) {
     loaderService.getloader().subscribe((res)=>{
-      console.log('res',res)
       this.show = res ;
     })
     if (isPlatformBrowser(platformId))
