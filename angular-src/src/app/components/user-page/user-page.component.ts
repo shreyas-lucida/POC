@@ -18,7 +18,7 @@ export class UserPageComponent implements OnInit {
   cardData: any[];
   showDescription = false;
   selectedItem: any;
-  searchValue='';
+  searchValue = '';
   seeMore: boolean;
   constructor(
     private router: Router,
@@ -40,10 +40,9 @@ export class UserPageComponent implements OnInit {
       if (data.status === 'ok') {
         this.cardData = data.data['card'][0];
         this.users = data.data['card'][0];
-        console.log(this.cardData);
       }
-    })
-  };
+    });
+  }
 
   logout(): void {
     this.authService.logout().then(() => {
@@ -59,20 +58,20 @@ export class UserPageComponent implements OnInit {
     this.selectedItem = input;
   }
 
-  goBack(){
+  goBack() {
     this._location.back();
   }
-  search(){
+  search() {
     let value = this.searchValue.toLowerCase()
     let filteredData = [] as any
     this.users.map((data: any) => {
-        if (data.name.toLowerCase().indexOf(value) !== -1 || data.description.toLowerCase().indexOf(value) !== -1 || value === '') {
-          filteredData.push(data);
-        }
+      if (data.name.toLowerCase().indexOf(value) !== -1 || data.description.toLowerCase().indexOf(value) !== -1 || value === '') {
+        filteredData.push(data);
+      }
     });
     this.cardData = filteredData;
   }
-  seeMoreOrLess(){
+  seeMoreOrLess() {
     this.seeMore = !this.seeMore;
   }
 }
