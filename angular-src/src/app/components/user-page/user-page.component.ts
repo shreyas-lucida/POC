@@ -46,16 +46,7 @@ export class UserPageComponent implements OnInit {
     this.route.params.subscribe(params =>
       this.searchValue = params.search ? params.search : ''
     );
-    this.pocTest();
     this.pocTest1();
-  }
-  pocTest(): void {
-    // this.apiService.testPOC().subscribe(data => {
-    //   if (data.status === 'ok') {
-    //     this.cardData = data.data['card'][0];
-    //     this.users = data.data['card'][0];
-    //   }
-    // });
   }
 
   pocTest1(): void {

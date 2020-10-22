@@ -23,7 +23,7 @@ export class HomePageComponent implements OnInit {
   }
 
   pocTest(): void {
-    // this.loaderService.show();
+    this.loaderService.show();
     this.apiService.testPOC().subscribe(data => {
       if (data.status === 'ok') {
         // this.cardData = data.data['card'][1];
@@ -67,7 +67,7 @@ export class HomePageComponent implements OnInit {
         this.cardData = firstLevelStack;
       }
     });
-    // this.loaderService.hide();
+    this.loaderService.hide();
   }
 
   selectedItem(input) {
