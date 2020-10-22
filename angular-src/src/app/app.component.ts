@@ -9,6 +9,7 @@ import {
 } from '@angular/router';
 import { LoadingBarService } from '@ngx-loading-bar/core';
 import { AppService } from '@services';
+import { LoaderService } from './components/providers/loaderService';
 
 @Component({
   selector: 'app-root',
@@ -20,6 +21,7 @@ export class AppComponent {
     private router: Router,
     private loadingBarService: LoadingBarService,
     public appService: AppService,
+    public loaderService: LoaderService,
     @Inject(PLATFORM_ID) private platformId: unknown,
     @Inject(APP_ID) private appId: string
   ) {
