@@ -7,9 +7,24 @@ import {ActivatedRoute} from '@angular/router';
 
 import { UserProfile } from '../../../../../shared/models/user-profile';
 import { AppService, AuthService, ApiService } from '../../core/services';
+import { animate, style, transition, trigger } from '@angular/animations';
 
 @Component({
   selector: 'app-user-page',
+  animations: [
+    trigger(
+      'myAnimation', [
+        transition(':enter', [
+          style({transform: 'translateY(100%)', opacity: 1}),
+          animate('250ms', style({transform: 'translateY(0)', opacity: 1}))
+        ]),
+        transition(':leave', [
+          style({transform: 'translateY(0)', 'opacity': 1}),
+          animate('250ms', style({transform: 'translateY(100%)', opacity: 1}))
+        ])
+      ],
+    )
+  ],
   templateUrl: './user-page.component.html',
   styleUrls: ['./user-page.component.scss'],
 })

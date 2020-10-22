@@ -40,27 +40,27 @@ const routes: Route[] = [
   {
     path: 'user',
     component: UserPageComponent,
-    canActivate: [AuthGuardService],
+    // canActivate: [AuthGuardService],
   },
   {
     path: 'user/:search',
     component: UserPageComponent,
-    canActivate: [AuthGuardService],
+    // canActivate: [AuthGuardService],
   },
   {
     path: 'user-search',
     component: UserSearchComponent,
-    canActivate: [AuthGuardService],
+    // canActivate: [AuthGuardService],
   },
   {
     path: 'home-page',
     component: HomePageComponent,
-    canActivate: [AuthGuardService],
+    // canActivate: [AuthGuardService],
   },
   {
     path: 'admin',
     component: UserPageComponent,
-    canActivate: [AuthGuardService],
+    // canActivate: [AuthGuardService],
     data: { roles: ['admin'] },
   },
 ];
