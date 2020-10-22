@@ -19,6 +19,7 @@ import { SpinnerComponent } from './components/spinner/spinner.component';
 import { UserSearchComponent } from './components/user-search/user-search.component';
 import { CoreModule } from './core/core.module';
 import { SharedModule } from './shared/shared.module';
+import { LoaderService } from './components/providers/loaderService';
 
 const routes: Route[] = [
   {
@@ -89,7 +90,7 @@ const routes: Route[] = [
     RouterModule.forRoot(routes, { enableTracing: false, initialNavigation: 'enabled' }),
     FormsModule,
   ],
-  providers: [],
+  providers: [LoaderService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
