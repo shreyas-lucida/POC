@@ -37,6 +37,7 @@ export class UserPageComponent implements OnInit {
       if (data.status === 'ok') {
         this.cardData = data.data['card'][0];
         console.log(this.cardData);
+        console.log(data)
       }
     })
   };
