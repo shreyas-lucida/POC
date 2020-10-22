@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
 import { Router } from '@angular/router';
 import { ApiService } from '../../core/services/api.service';
+import { LoaderService } from '../providers/loaderService';
 
 @Component({
   selector: 'app-home-page',
@@ -13,7 +14,8 @@ export class HomePageComponent implements OnInit {
   cardData: any[];
   constructor(private _location: Location,
     private router: Router,
-    private apiService: ApiService) {
+    private apiService: ApiService,
+    private loaderService: LoaderService,) {
   }
   ngOnInit(): void {
     this.selectedItem('1');
@@ -21,6 +23,7 @@ export class HomePageComponent implements OnInit {
   }
 
   pocTest(): void {
+    // this.loaderService.show();
     this.apiService.testPOC().subscribe(data => {
       if (data.status === 'ok') {
         // this.cardData = data.data['card'][1];
@@ -64,6 +67,7 @@ export class HomePageComponent implements OnInit {
         this.cardData = firstLevelStack;
       }
     });
+    // this.loaderService.hide();
   }
 
   selectedItem(input) {

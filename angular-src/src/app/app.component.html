@@ -1,4 +1,5 @@
 <ngx-loading-bar color="firebrick" [includeSpinner]="false"></ngx-loading-bar>
+<app-spinner *ngIf="loaderService.showLoader"></app-spinner>
 <div class="site_wrapper">
     <!-- <app-header></app-header> -->
     <router-outlet></router-outlet>

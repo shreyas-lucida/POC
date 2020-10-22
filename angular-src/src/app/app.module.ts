@@ -14,6 +14,8 @@ import { RegisterComponent } from './components/register/register.component';
 import { UserPageComponent } from './components/user-page/user-page.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { HomePageComponent } from './components/home-page/home-page.component';
+import { SpinnerComponent } from './components/spinner/spinner.component';
+
 import { UserSearchComponent } from './components/user-search/user-search.component';
 import { CoreModule } from './core/core.module';
 import { SharedModule } from './shared/shared.module';
@@ -75,7 +77,8 @@ const routes: Route[] = [
     UserPageComponent,
     RegisterComponent,
     SidebarComponent,
-    HomePageComponent
+    HomePageComponent,
+    SpinnerComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'app-root' }),
