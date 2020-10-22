@@ -70,26 +70,26 @@ export class ApiController {
     return responses.getOkayResponse<string>(whatToSay);
   }
 
-  @Post('/login')
-  login(
-    @BodyParams('username') username: string,
-    @BodyParams('password') password: string
-  ): Promise<LoginActionResponse> {
-    return this.authService.authenticate(username, password).then((user) => {
-      if (!user) throw new BadRequest(`Username or password are invalid!`);
+  // @Post('/login')
+  // login(
+  //   @BodyParams('username') username: string,
+  //   @BodyParams('password') password: string
+  // ): Promise<LoginActionResponse> {
+  //   return this.authService.authenticate(username, password).then((user) => {
+  //     if (!user) throw new BadRequest(`Username or password are invalid!`);
 
-      const token = this.authService.generateToken(user.toJSON());
-      const response = responses.getOkayResponse();
+  //     const token = this.authService.generateToken(user.toJSON());
+  //     const response = responses.getOkayResponse();
 
-      return {
-        ...response,
-        data: {
-          token: token,
-          profile: user,
-        },
-      };
-    });
-  }
+  //     return {
+  //       ...response,
+  //       data: {
+  //         token: token,
+  //         profile: user,
+  //       },
+  //     };
+  //   });
+  // }
 
   @Get('/profile')
   @UseBefore(AuthMiddleware)

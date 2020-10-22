@@ -1,6 +1,6 @@
 .card-details {
     width: 290px;
-    height: 230px;
+    height: 344px;
     box-shadow: 0px 3px 6px #00000029;
     border-radius: 10px;
     background-color: white;
@@ -8,13 +8,15 @@
         background: #001cb0;
         border-top-left-radius: 10px;
         border-top-right-radius: 10px;
-        min-height: 75px;
+        min-height: 104px;
         img {
             width: 33px;
             height: 24px;
         }
         p {
             color: white;
+            font-size: 18px;
+            font-weight: 400;
         }
         .daily-button {
             margin: 0px;
@@ -27,7 +29,7 @@
         }
         .type-box {
             position: absolute;
-            bottom: 54%;
+            bottom: 60%;
             font-size: 13px;
             background: #00dfed;
             padding: 1px 9px;
@@ -52,8 +54,14 @@
     font-size: 20px;
 }
 
-.font-13px {
-    font-size: 13px;
+.font-15px {
+    font-size: 15px;
+    color: #354052;
+    opacity: 0.6;
+    line-height: 1.9;
+}
+.font-14px{
+    font-size: 14px;
 }
 
 .modal.show .modal-dialog {
@@ -63,11 +71,18 @@
 .top-card {
     background: transparent linear-gradient(97deg, #001cb0 0%, #00dfed 100%) 0% 0% no-repeat padding-box;
     border-radius: 10px;
+    height: 137px;
     .logo-top {
-        height: 65px;
+        height: 116px;
+        width: 122px;
     }
     p{
         color: white;
-        font-size: 22px;
+        font-size: 38px;
+        font-weight: 300;
     }
+}
+.btn-blue{
+    font-size: 13px;
+    height: 36px;
 }
