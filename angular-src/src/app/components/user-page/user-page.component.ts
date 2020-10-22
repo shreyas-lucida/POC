@@ -3,7 +3,7 @@ import { ToastrService } from 'ngx-toastr';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Location } from '@angular/common';
-
+import { ActivatedRoute } from '@angular/router';
 
 import { UserProfile } from '../../../../../shared/models/user-profile';
 import { AppService, AuthService, ApiService } from '../../core/services';
@@ -30,7 +30,9 @@ export class UserPageComponent implements OnInit {
     private toastService: ToastrService,
     private authService: AuthService,
     private apiService: ApiService,
-    private _location: Location
+    private _location: Location,
+    private route: ActivatedRoute
+
   ) {
     this.selectedSubCat = sessionStorage.getItem('subCat');
     this.selectedCat = sessionStorage.getItem('cat');
@@ -41,6 +43,9 @@ export class UserPageComponent implements OnInit {
     return this.appService.user;
   }
   ngOnInit() {
+    this.route.params.subscribe(params =>
+      this.searchValue = params.search ? params.search : ''
+    );
     this.pocTest();
     this.pocTest1();
   }
@@ -108,10 +113,9 @@ export class UserPageComponent implements OnInit {
         });
         var grouped = _.mapValues(_.groupBy(secondLevelStack[this.selectedCat]['subchildren'], 'subcategory'),
           clist => clist.map(car => _.omit(car, 'subcategory')));
-
-        console.log(grouped, grouped[this.selectedSubCat])
         this.cardData = grouped[this.selectedSubCat];
         this.users = this.cardData;
+        this.search()
       }
     });
   }
@@ -134,6 +138,8 @@ export class UserPageComponent implements OnInit {
     this._location.back();
   }
   search() {
+    console.log(this.searchValue);
+
     let value = this.searchValue.toLowerCase()
     let filteredData = [] as any
     this.users.map((data: any) => {

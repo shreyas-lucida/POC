@@ -1,6 +1,7 @@
 .card-details {
     width: 290px;
     // height: 208px;
+    transition: 0.3s;
     height: 250px;
     box-shadow: 0px 3px 6px #00000029;
     border-radius: 10px;
@@ -17,7 +18,7 @@
         p {
             color: white;
             font-size: 18px;
-            font-weight: 400;
+            font-weight: 600;
         }
         .daily-button {
             margin: 0px;
@@ -37,6 +38,7 @@
             color: black;
             border-top-left-radius: 12px;
             border-bottom-right-radius: 12px;
+            font-weight: 400;
         }
     }
 }
@@ -80,9 +82,11 @@
     background: transparent linear-gradient(97deg, #001cb0 0%, #00dfed 100%) 0% 0% no-repeat padding-box;
     border-radius: 10px;
     height: 137px;
+    margin-top: 2rem;
     .logo-top {
         height: 116px;
         width: 122px;
+        margin-right: 1rem;
     }
     p{
         color: white;
@@ -128,4 +132,7 @@
     -webkit-line-clamp: 2;
     display: -webkit-box;
     -webkit-box-orient: vertical;
+}
+.border-bottom {
+    border-bottom: 0.1px solid #f6f6f6 !important;
 }
