@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-
+import   {MsalService} from '@azure/msal-angular';
 @Component({
   selector: 'app-sidebar',
   templateUrl: './sidebar.component.html',
@@ -17,15 +17,21 @@ export class SidebarComponent implements OnInit {
   isSideBarOpen = false;
   activeIndex: number = null;
   userName = '';
-  constructor(private router: Router) { }
+  name: any;
+  constructor(private router: Router, private _msalService: MsalService) { }
 
   ngOnInit(): void {
-    this.userName =  sessionStorage.getItem("user");
     this.sidebarItems.map((eachItem, ind) => {
       if (eachItem.path === this.router.url) {
         this.activeIndex = ind;
       }
     });
+
+    const account = this._msalService.getAccount();
+    this.name = account.name;
+    this.userName = account.userName;
+    // this.userName =  sessionStorage.getItem("user");
+
   }
   selecteByRoute(selectedItem, ind): any {
     this.sidebarItems.map(eachItem => {
