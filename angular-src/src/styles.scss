@@ -61,8 +61,9 @@ body {
     color: #322A7D;
     border-radius: 7px;
     text-transform: capitalize;
-    font-size: 10px;
+    font-size: 12px;
     font-weight: 600;
+    letter-spacing: 0.5px;
     &:hover {
         color: #7a7cab;
     }
@@ -75,7 +76,9 @@ body {
     color: white;
     border-radius: 7px;
     text-transform: capitalize;
-    font-size: 10px;
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: 0.5px;
     &:hover {
         color: white;
     }
