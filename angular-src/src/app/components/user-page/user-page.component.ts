@@ -3,10 +3,11 @@ import { ToastrService } from 'ngx-toastr';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Location } from '@angular/common';
-
+import { ActivatedRoute } from '@angular/router';
 
 import { UserProfile } from '../../../../../shared/models/user-profile';
 import { AppService, AuthService, ApiService } from '../../core/services';
+import _ from 'lodash';
 
 @Component({
   selector: 'app-user-page',
@@ -20,26 +21,101 @@ export class UserPageComponent implements OnInit {
   selectedItem: any;
   searchValue = '';
   seeMore: boolean;
+  selectedSubCat = '';
+  selectedCat = '';
+
   constructor(
     private router: Router,
     private appService: AppService,
     private toastService: ToastrService,
     private authService: AuthService,
     private apiService: ApiService,
-    private _location: Location
-  ) { }
+    private _location: Location,
+    private route: ActivatedRoute
+
+  ) {
+    this.selectedSubCat = sessionStorage.getItem('subCat');
+    this.selectedCat = sessionStorage.getItem('cat');
+
+  }
 
   get user(): UserProfile {
     return this.appService.user;
   }
   ngOnInit() {
+    this.route.params.subscribe(params =>
+      this.searchValue = params.search ? params.search : ''
+    );
     this.pocTest();
+    this.pocTest1();
   }
   pocTest(): void {
+    // this.apiService.testPOC().subscribe(data => {
+    //   if (data.status === 'ok') {
+    //     this.cardData = data.data['card'][0];
+    //     this.users = data.data['card'][0];
+    //   }
+    // });
+  }
+
+  pocTest1(): void {
     this.apiService.testPOC().subscribe(data => {
       if (data.status === 'ok') {
-        this.cardData = data.data['card'][0];
-        this.users = data.data['card'][0];
+        // this.cardData = data.data['card'][1];
+        let TestData = data.data['card'][2];
+        let arr = [];
+        let arrSub = [];
+        TestData.forEach((element, i) => {
+          if (element.category.length === 0) {
+            element.category = TestData[i - 1]['category'];
+          } else {
+            arr.push(element);
+          }
+          if (element.categorydescription.length === 0) {
+            element.categorydescription = TestData[i - 1]['categorydescription'];
+          }
+          if (element.categorytype.length === 0) {
+            element.categorytype = TestData[i - 1]['categorytype'];
+          }
+          if (element.subcategory.length === 0) {
+            element.subcategory = TestData[i - 1]['subcategory'];
+          } else {
+            arrSub.push(element);
+          }
+          if (element.subcategorydescription.length === 0) {
+            element.subcategorydescription = TestData[i - 1]['subcategorydescription'];
+          }
+          if (element.subcategorytype.length === 0) {
+            element.subcategorytype = TestData[i - 1]['subcategorytype'];
+          }
+        });
+        let firstLevelStack = [];
+        let secondLevelStack = [];
+        arr.forEach(cat => {
+          cat['children'] = [];
+          arrSub.forEach(subcat => {
+            if (cat.category === subcat.category) {
+              cat['children'].push(subcat);
+            }
+          });
+          firstLevelStack.push(cat);
+        });
+        firstLevelStack.forEach(element => {
+          element['children'].forEach(element1 => {
+            element1['subchildren'] = [];
+            TestData.forEach(element2 => {
+              if (element1['subcategory'] === element2['subcategory'] && element1['category'] === element2['category']) {
+                element['subchildren'].push(element2);
+              }
+            });
+          });
+          secondLevelStack.push(element);
+        });
+        var grouped = _.mapValues(_.groupBy(secondLevelStack[this.selectedCat]['subchildren'], 'subcategory'),
+          clist => clist.map(car => _.omit(car, 'subcategory')));
+        this.cardData = grouped[this.selectedSubCat];
+        this.users = this.cardData;
+        this.search()
       }
     });
   }
@@ -62,10 +138,12 @@ export class UserPageComponent implements OnInit {
     this._location.back();
   }
   search() {
+    console.log(this.searchValue);
+
     let value = this.searchValue.toLowerCase()
     let filteredData = [] as any
     this.users.map((data: any) => {
-      if (data.name.toLowerCase().indexOf(value) !== -1 || data.description.toLowerCase().indexOf(value) !== -1 || value === '') {
+      if (data.reportsname.toLowerCase().indexOf(value) !== -1 || data.reportsdescription.toLowerCase().indexOf(value) !== -1 || value === '') {
         filteredData.push(data);
       }
     });

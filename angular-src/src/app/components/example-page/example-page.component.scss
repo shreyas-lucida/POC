@@ -16,7 +16,7 @@
         p {
             color: white;
             font-size: 18px;
-            font-weight: 400;
+            font-weight: 600;
         }
         .daily-button {
             margin: 0px;
@@ -29,13 +29,14 @@
         }
         .type-box {
             position: absolute;
-            bottom: 60%;
+            bottom: 61.5%;
             font-size: 13px;
             background: #00dfed;
-            padding: 1px 9px;
+            padding: 2px 9px;
             color: black;
             border-top-left-radius: 12px;
             border-bottom-right-radius: 12px;
+            font-weight: 500;
         }
     }
 }
@@ -59,9 +60,12 @@
     color: #354052;
     opacity: 0.6;
     line-height: 1.9;
+    text-align: center;
+    margin-top: 2rem;
 }
 .font-14px{
     font-size: 14px;
+    font-weight: 600;
 }
 
 .modal.show .modal-dialog {
@@ -71,10 +75,12 @@
 .top-card {
     background: transparent linear-gradient(97deg, #001cb0 0%, #00dfed 100%) 0% 0% no-repeat padding-box;
     border-radius: 10px;
-    height: 137px;
+    height: 148px;
+    margin-top: 2rem;
     .logo-top {
         height: 116px;
         width: 122px;
+        margin-right: 1rem;
     }
     p{
         color: white;
@@ -83,6 +89,13 @@
     }
 }
 .btn-blue{
-    font-size: 13px;
+    font-size: 14px;
     height: 36px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+
+}
+
+.border-bottom {
+    border-bottom: 0.1px solid #f6f6f6 !important;
 }

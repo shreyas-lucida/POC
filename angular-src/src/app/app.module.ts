@@ -16,6 +16,7 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { HomePageComponent } from './components/home-page/home-page.component';
 import { SpinnerComponent } from './components/spinner/spinner.component';
 
+import { UserSearchComponent } from './components/user-search/user-search.component';
 import { CoreModule } from './core/core.module';
 import { SharedModule } from './shared/shared.module';
 
@@ -41,17 +42,27 @@ const routes: Route[] = [
   {
     path: 'user',
     component: UserPageComponent,
-    // canActivate: [AuthGuardService],
+    canActivate: [AuthGuardService],
+  },
+  {
+    path: 'user/:search',
+    component: UserPageComponent,
+    canActivate: [AuthGuardService],
+  },
+  {
+    path: 'user-search',
+    component: UserSearchComponent,
+    canActivate: [AuthGuardService],
   },
   {
     path: 'home-page',
     component: HomePageComponent,
-    // canActivate: [AuthGuardService],
+    canActivate: [AuthGuardService],
   },
   {
     path: 'admin',
     component: UserPageComponent,
-    // canActivate: [AuthGuardService],
+    canActivate: [AuthGuardService],
     data: { roles: ['admin'] },
   },
 ];
@@ -59,6 +70,7 @@ const routes: Route[] = [
 @NgModule({
   declarations: [
     AppComponent,
+    UserSearchComponent,
     HomeComponent,
     ExamplePageComponent,
     LoginComponent,

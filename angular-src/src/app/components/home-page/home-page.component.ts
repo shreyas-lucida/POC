@@ -26,11 +26,15 @@ export class HomePageComponent implements OnInit {
     // this.loaderService.show();
     this.apiService.testPOC().subscribe(data => {
       if (data.status === 'ok') {
-        this.cardData = data.data['card'][1];
+        // this.cardData = data.data['card'][1];
         let TestData = data.data['card'][2];
+        let arr = [];
+        let arrSub = [];
         TestData.forEach((element, i) => {
           if (element.category.length === 0) {
             element.category = TestData[i - 1]['category'];
+          } else {
+            arr.push(element);
           }
           if (element.categorydescription.length === 0) {
             element.categorydescription = TestData[i - 1]['categorydescription'];
@@ -40,6 +44,8 @@ export class HomePageComponent implements OnInit {
           }
           if (element.subcategory.length === 0) {
             element.subcategory = TestData[i - 1]['subcategory'];
+          } else {
+            arrSub.push(element);
           }
           if (element.subcategorydescription.length === 0) {
             element.subcategorydescription = TestData[i - 1]['subcategorydescription'];
@@ -48,7 +54,17 @@ export class HomePageComponent implements OnInit {
             element.subcategorytype = TestData[i - 1]['subcategorytype'];
           }
         });
-        console.log(TestData);
+        let firstLevelStack = [];
+        arr.forEach(cat => {
+          cat['children'] = [];
+          TestData.forEach(subcat => {
+            if (cat.category === subcat.category) {
+              cat['children'].push(subcat);
+            }
+          });
+          firstLevelStack.push(cat);
+        });
+        this.cardData = firstLevelStack;
       }
     });
     // this.loaderService.hide();
