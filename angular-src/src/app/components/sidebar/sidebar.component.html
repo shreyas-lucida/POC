@@ -20,7 +20,7 @@
   <div class="open-panal-btn">
     <i class="fa fa-bars" aria-hidden="true" (click)="isSideBarOpen = true"></i>
   </div>
-  <div class="sidebarIcon " *ngFor="let item of sidebarItems; let ind = index" (click)="selecteByRoute(item, ind)"
+  <div class="sidebarIcon" *ngFor="let item of sidebarItems; let ind = index" (click)="selecteByRoute(item, ind)"
     [class.active]="activeIndex === ind">
     <i class={{item.icons}}></i>
   </div>

@@ -17,6 +17,8 @@ import { LoaderService } from './components/providers/loaderService';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
+show;
+
   constructor(
     private router: Router,
     private loadingBarService: LoadingBarService,
@@ -25,6 +27,9 @@ export class AppComponent {
     @Inject(PLATFORM_ID) private platformId: unknown,
     @Inject(APP_ID) private appId: string
   ) {
+    loaderService.getloader().subscribe((res)=>{
+      this.show = res ;
+    })
     if (isPlatformBrowser(platformId))
       this.router.events.subscribe(this.navigationInterceptor.bind(this));
   }

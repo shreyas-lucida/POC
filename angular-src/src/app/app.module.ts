@@ -19,6 +19,7 @@ import { SpinnerComponent } from './components/spinner/spinner.component';
 import { UserSearchComponent } from './components/user-search/user-search.component';
 import { CoreModule } from './core/core.module';
 import { SharedModule } from './shared/shared.module';
+import { LoaderService } from './components/providers/loaderService';
 import { environment } from '../environments/environment';
 import { Configuration } from 'msal';
 import {
@@ -59,39 +60,39 @@ const routes: Route[] = [
     path: '',
     pathMatch: 'full',
     component: HomePageComponent,
-    canActivate: [ MsalGuard ]
+    canActivate: [MsalGuard]
   },
   {
     path: 'example',
     pathMatch: 'full',
     component: ExamplePageComponent,
-    canActivate: [ MsalGuard ]
+    canActivate: [MsalGuard]
   },
   {
     path: 'user',
     component: UserPageComponent,
-    canActivate: [ MsalGuard ],
+    canActivate: [MsalGuard],
   },
   {
     path: 'user/:search',
     component: UserPageComponent,
-    canActivate: [ MsalGuard ]
+    canActivate: [MsalGuard]
 
   },
   {
     path: 'user-search',
     component: UserSearchComponent,
-    canActivate: [ MsalGuard ]
+    canActivate: [MsalGuard]
   },
   {
     path: 'home-page',
     component: HomePageComponent,
-    canActivate: [ MsalGuard ]
+    canActivate: [MsalGuard]
   },
   {
     path: 'admin',
     component: UserPageComponent,
-    canActivate: [ MsalGuard ],
+    canActivate: [MsalGuard],
     data: { roles: ['admin'] },
   },
 ];
@@ -133,12 +134,11 @@ const routes: Route[] = [
       provide: MSAL_CONFIG_ANGULAR,
       useFactory: MSALAngularConfigFactory
     },
-    MsalService
+    MsalService,
+    LoaderService
   ],
   bootstrap: [AppComponent],
 })
-
-
 
 export class AppModule { }
 

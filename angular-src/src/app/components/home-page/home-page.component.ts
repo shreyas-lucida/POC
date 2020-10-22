@@ -70,8 +70,8 @@ export class HomePageComponent implements OnInit {
         });
         this.cardData = firstLevelStack;
       }
+        this.loaderService.hide();
     });
-    this.loaderService.hide();
   }
 
   goToReports() {
