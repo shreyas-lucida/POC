@@ -10,13 +10,13 @@
                 </div>
             </div>
         </div>
-        <div class="container-fluid">
+        <div class="container-fluid d-flex">
             <div class="row mx-auto my-4 w-100">
                 <button type="button" class="btn btn-transparent mr-3 font-14px" (click)="goBack()">{{selectedSubCat}}</button>
                 <button type="button" class="btn btn-transparent border-bottom-custom font-14px">{{selectedSubCat}}
                     Report</button>
             </div>
-            <div class="search float-right w-25">
+            <div class="search float-right w-25 my-auto">
                 <i class="fa fa-search icon"></i>
                 <input class="w-100" placeholder="Search" [(ngModel)]="searchValue" (ngModelChange)="search()">
             </div>
