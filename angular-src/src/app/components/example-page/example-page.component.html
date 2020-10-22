@@ -1,18 +1,18 @@
 <div class="container-fluid p-0 d-flex">
     <app-sidebar></app-sidebar>
-    <div class="container-fluid p-0">
+    <div class="container-fluid p-0 px-5">
         <div class="container-fluid">
             <div class="top-card">
-                <div class="row w-100 mx-auto d-flex p-4">
-                    <p class="my-auto">{{displayHeading}}</p>
+                <div class="row w-100 mx-auto d-flex p-3">
+                    <p class="my-auto ml-3">{{displayHeading}}</p>
                     <img class="ml-auto logo-top" src="../../../assets/logo.png">
                 </div>
             </div>
         </div>
-        <div class="container-fluid my-3">
+        <div class="container-fluid my-4">
             <ul class="nav">
                 <li class="nav-item" *ngFor="let item of cardData; index as i">
-                    <button type="button" class="btn btn-transparent" (click)="selectedItem(i)"
+                    <button type="button" class="btn btn-transparent font-14px" (click)="selectedItem(i)"
                         [ngClass]="{'border-bottom-custom': selectedTab === i }">{{item.category}}</button>
                 </li>
                 
@@ -20,7 +20,7 @@
         </div>
         <div class="container-fluid my-2">
             <div class="row mx-auto w-100">
-                <div class="card card-details mx-2 my-2" *ngFor="let item of selectedCardData; index as i">
+                <div class="card card-details my-4 mr-auto" *ngFor="let item of selectedCardData; index as i">
                     <div class="row card-blue d-flex w-100 mx-auto p-2">
                         <p class="w-75 my-auto">{{item}}</p>
                         <span class="ml-auto d-flex">
@@ -30,13 +30,13 @@
                             Connection & Billing
                         </p>
                     </div>
-                    <div class="row mx-auto w-100 my-auto">
-                        <p class="p-2 font-13px text-center my-3">Reports & Insights that gives 360 degree view of their
+                    <div class="row mx-auto w-100">
+                        <p class="p-2 font-15px text-center mt-3">Reports & Insights that gives 360 degree view of their
                             business, enabling to search and explore data to make informed decision.</p>
                     </div>
-                    <div class="row mx-auto w-100 my-auto">
+                    <div class="row mx-auto w-100 my-auto mb-3">
                         <div class="col-12 d-flex my-1">
-                            <button class="btn btn-blue ml-auto" (click)="goToReports()">Access Report</button>
+                            <button class="btn btn-blue mx-auto" (click)="goToReports()">Access</button>
                         </div>
                     </div>
                 </div>

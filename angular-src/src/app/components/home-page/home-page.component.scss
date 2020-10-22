@@ -1,6 +1,6 @@
 .card-details {
-    width: 260px;
-    height: 221px;
+    width: 218px;
+    height: 327px;
     box-shadow: 0px 3px 6px #00000029;
     border-radius: 10px;
     background-color: white;
@@ -8,12 +8,14 @@
         background: #001cb0;
         border-top-left-radius: 10px;
         border-top-right-radius: 10px;
-        min-height: 105px;
+        min-height: 160px;
         i{
             color: white
         }
         p {
             color: white;
+            font-size: 18px;
+            font-weight: 400;
         }
         .daily-button {
             margin: 0px;
@@ -53,6 +55,9 @@
 
 .font-13px {
     font-size: 13px;
+    color: #354052;
+    opacity: 0.56;
+    line-height: 1.9;
 }
 
 .modal.show .modal-dialog {
@@ -60,13 +65,17 @@
 }
 
 .top-card {
-    background: transparent linear-gradient(97deg, #001cb0 0%, #00dfed 100%) 0% 0% no-repeat padding-box;
+    height: 210px;
+    background: transparent linear-gradient(97deg, #00dfed 0%, #001cb0 100%) 0% 0% no-repeat padding-box;
     border-radius: 10px;
     .logo-top {
-        height: 65px;
+        height: 104px;
+        width: 109px;
     }
     p{
         color: white;
-        font-size: 25px;
+        margin-top: 30px;
+        font-size: 46px;
+        font-weight: 300;
     }
 }

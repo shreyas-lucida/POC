@@ -57,11 +57,12 @@ body {
 .btn-grey {
     width: 119px;
     height: 30px;
-    background: #eeeff1;
-    color: #7a7cab;
+    background: #BBC5D5;
+    color: #322A7D;
     border-radius: 7px;
     text-transform: capitalize;
-    font-size: 11px;
+    font-size: 10px;
+    font-weight: 600;
     &:hover {
         color: #7a7cab;
     }
@@ -74,7 +75,7 @@ body {
     color: white;
     border-radius: 7px;
     text-transform: capitalize;
-    font-size: 11px;
+    font-size: 10px;
     &:hover {
         color: white;
     }
@@ -102,15 +103,36 @@ body {
 
 .btn-transparent {
     background: transparent;
-    color: #001cb0;
+    color: #BBC5D5;
     font-size: 13px;
+}
+.btn-transparent:hover{
+    color: #322A7D;
 }
 
 .border-bottom-custom {
+    color: #322A7D;
     border-bottom: 3px solid #f6a623;
     border-radius: 0;
+    font-weight: bold;
 }
 
 .btn {
     box-shadow: none !important;
+}
+.search{
+    input{
+        font-weight: normal;
+        border-radius: 8px;
+        border: 2px solid #001cb0;
+        height: 2.3rem;
+        padding: 0.5rem;
+        padding-left: 2rem;
+        color: #322A7D;
+    }
+    i { 
+        position: absolute;
+        padding: 12px;
+        color: #001cb0;
+    } 
 }
