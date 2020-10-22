@@ -35,7 +35,7 @@ export class UserPageComponent implements OnInit {
   }
   ngOnInit() {
     this.route.params.subscribe( params =>
-     this.searchValue = params.search    
+     this.searchValue = params.search?params.search:''    
      ) 
     this.pocTest();
   }
