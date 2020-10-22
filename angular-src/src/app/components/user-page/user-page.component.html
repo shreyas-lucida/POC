@@ -29,7 +29,7 @@
                         <div class="modal-content" *ngIf="selectedItem === cardItem">
                             <div class="modal-body">
                                 <div class="row d-flex w-100 mx-auto">
-                                    <p class="w-75 header font-weight-700 font-20px my-auto">{{selectedItem.name}}</p>
+                                    <p class="w-75 header font-weight-700 font-20px my-auto">{{selectedItem.reportsname}}</p>
                                     <span class="ml-auto">
                                         <img src="../../../assets/chart.png">
                                     </span>
@@ -41,11 +41,11 @@
                                 </div>
                                 <div class="row mx-auto w-100 d-block my-1">
                                     <p class="font-11px color-purple mb-1">Description</p>
-                                    <p class="font-10px">{{selectedItem.description}}</p>
+                                    <p class="font-10px">{{selectedItem.subcategorydescription}}</p>
                                 </div>
                                 <div class="row mx-auto w-100 d-block my-1">
                                     <p class="font-11px color-purple mb-1">Report Owner</p>
-                                    <p class="font-10px">{{selectedItem.reportowner}}</p>
+                                    <p class="font-10px">{{selectedItem.reportsowner}}</p>
                                 </div>
 
                             </div>
