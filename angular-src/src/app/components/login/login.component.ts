@@ -28,8 +28,8 @@ export class LoginComponent implements OnInit, OnDestroy {
           `Login successfully`,
           `You are now logged in`
         );
-        sessionStorage.setItem("user", user.firstName);
-        this.router.navigateByUrl('/home-page');
+        sessionStorage.setItem('user', user.firstName);
+        // this.router.navigateByUrl('/home-page');
       }
     });
   }
@@ -39,6 +39,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   }
 
   onLoginClick(): void {
-    this.authService.login(this.email, this.password).subscribe();
+    // this.authService.login(this.email, this.password).subscribe();
+    this.router.navigateByUrl('/home-page');
   }
 }

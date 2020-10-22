@@ -14,9 +14,12 @@ import { AppService, AuthService, ApiService } from '../../core/services';
   styleUrls: ['./user-page.component.scss'],
 })
 export class UserPageComponent implements OnInit {
+  users: any[];
   cardData: any[];
   showDescription = false;
   selectedItem: any;
+  searchValue='';
+  seeMore: boolean;
   constructor(
     private router: Router,
     private appService: AppService,
@@ -36,6 +39,7 @@ export class UserPageComponent implements OnInit {
     this.apiService.testPOC().subscribe(data => {
       if (data.status === 'ok') {
         this.cardData = data.data['card'][0];
+        this.users = data.data['card'][0];
         console.log(this.cardData);
       }
     })
@@ -57,5 +61,18 @@ export class UserPageComponent implements OnInit {
 
   goBack(){
     this._location.back();
+  }
+  search(){
+    let value = this.searchValue.toLowerCase()
+    let filteredData = [] as any
+    this.users.map((data: any) => {
+        if (data.name.toLowerCase().indexOf(value) !== -1 || data.description.toLowerCase().indexOf(value) !== -1 || value === '') {
+          filteredData.push(data);
+        }
+    });
+    this.cardData = filteredData;
+  }
+  seeMoreOrLess(){
+    this.seeMore = !this.seeMore;
   }
 }

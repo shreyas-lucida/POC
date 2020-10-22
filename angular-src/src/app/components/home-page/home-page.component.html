@@ -1,23 +1,23 @@
 <div class="container-fluid p-0 d-flex">
     <app-sidebar></app-sidebar>
-    <div class="container-fluid p-0">
+    <div class="container-fluid p-0 px-5">
         <div class="container-fluid my-3">
             <div class="top-card">
-                <div class="row w-100 mx-auto d-flex p-4">
+                <div class="row w-100 mx-auto d-flex p-5">
                     <img class="mr-4 logo-top" src="../../../assets/logo.png">
-                    <p class="my-auto">Customer Market 3D</p>
+                    <p class="">Customer Market 3D</p>
                 </div>
             </div>
         </div>
        
         <div class="container-fluid my-2">
             <div class="row mx-auto w-100">
-                <div class="card card-details mx-auto my-2" *ngFor="let cardItem of cardData" (click)="goToReports()">
+                <div class="card card-details my-2 mr-auto" *ngFor="let cardItem of cardData;let i = index" (click)="goToReports()">
                     <div class="row card-blue d-block w-100 mx-auto p-2">
-                        <i class="fa fa-users fa-3x text-center my-2 mx-auto d-block" aria-hidden="true"></i>
+                        <i class="fa fa-users fa-3x text-center my-2 mx-auto d-block mb-3" aria-hidden="true"></i>
                         <p class="my-auto text-center mb-2">{{cardItem.category}}</p>
                     </div>
-                    <div class="row mx-auto w-100 my-auto">
+                    <div class="row mx-auto w-100">
                         <p class="p-2 font-13px text-center my-3">Reports & Insights that gives 360 degree view of their
                             business, enabling to search and explore data to make informed decision.</p>
                     </div>
