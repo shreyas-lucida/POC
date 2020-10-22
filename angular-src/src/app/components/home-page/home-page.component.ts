@@ -24,10 +24,31 @@ export class HomePageComponent implements OnInit {
     this.apiService.testPOC().subscribe(data => {
       if (data.status === 'ok') {
         this.cardData = data.data['card'][1];
-        console.log(this.cardData);
+        let TestData = data.data['card'][2];
+        TestData.forEach((element, i) => {
+          if (element.category.length === 0) {
+            element.category = TestData[i - 1]['category'];
+          }
+          if (element.categorydescription.length === 0) {
+            element.categorydescription = TestData[i - 1]['categorydescription'];
+          }
+          if (element.categorytype.length === 0) {
+            element.categorytype = TestData[i - 1]['categorytype'];
+          }
+          if (element.subcategory.length === 0) {
+            element.subcategory = TestData[i - 1]['subcategory'];
+          }
+          if (element.subcategorydescription.length === 0) {
+            element.subcategorydescription = TestData[i - 1]['subcategorydescription'];
+          }
+          if (element.subcategorytype.length === 0) {
+            element.subcategorytype = TestData[i - 1]['subcategorytype'];
+          }
+        });
+        console.log(TestData);
       }
-    })
-  };
+    });
+  }
 
   selectedItem(input) {
     if (input === '1') {
