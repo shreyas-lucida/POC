@@ -80,6 +80,7 @@
                     </div>
                 </div>
             </div>
+            <div class="empty-search" *ngIf="searchValue && cardData.length === 0">No records found</div>
             <div class="w-100" *ngIf="cardData && cardData.length > 8">
                 <button class="float-right mb-3 see-more mx-5"
                     (click)="seeMoreOrLess()">{{seeMore?'See less ':'See more'}}</button>
