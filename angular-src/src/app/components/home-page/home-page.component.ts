@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
 import { Router } from '@angular/router';
 import { ApiService } from '../../core/services/api.service';
+import { LoaderService } from '../providers/loaderService';
 
 @Component({
   selector: 'app-home-page',
@@ -13,21 +14,31 @@ export class HomePageComponent implements OnInit {
   cardData: any[];
   constructor(private _location: Location,
     private router: Router,
-    private apiService: ApiService) {
+    private apiService: ApiService,
+    private loaderService: LoaderService) {
   }
   ngOnInit(): void {
-    this.selectedItem('1');
     this.pocTest();
+    sessionStorage.removeItem("cat");
+    sessionStorage.removeItem("subCat");
+    localStorage.removeItem("accessToken");
+    localStorage.removeItem("result");
+
   }
 
   pocTest(): void {
+    this.loaderService.show();
     this.apiService.testPOC().subscribe(data => {
       if (data.status === 'ok') {
-        this.cardData = data.data['card'][1];
+        // this.cardData = data.data['card'][1];
         let TestData = data.data['card'][2];
+        let arr = [];
+        let arrSub = [];
         TestData.forEach((element, i) => {
           if (element.category.length === 0) {
             element.category = TestData[i - 1]['category'];
+          } else {
+            arr.push(element);
           }
           if (element.categorydescription.length === 0) {
             element.categorydescription = TestData[i - 1]['categorydescription'];
@@ -37,6 +48,8 @@ export class HomePageComponent implements OnInit {
           }
           if (element.subcategory.length === 0) {
             element.subcategory = TestData[i - 1]['subcategory'];
+          } else {
+            arrSub.push(element);
           }
           if (element.subcategorydescription.length === 0) {
             element.subcategorydescription = TestData[i - 1]['subcategorydescription'];
@@ -45,113 +58,20 @@ export class HomePageComponent implements OnInit {
             element.subcategorytype = TestData[i - 1]['subcategorytype'];
           }
         });
-        console.log(TestData);
+        let firstLevelStack = [];
+        arr.forEach(cat => {
+          cat['children'] = [];
+          TestData.forEach(subcat => {
+            if (cat.category === subcat.category) {
+              cat['children'].push(subcat);
+            }
+          });
+          firstLevelStack.push(cat);
+        });
+        this.cardData = firstLevelStack;
       }
+        this.loaderService.hide();
     });
-  }
-
-  selectedItem(input) {
-    if (input === '1') {
-      this.cardData = [
-        {
-          name: 'C & I Customers',
-          type: 'Connections & Billing'
-        },
-        {
-          name: 'Customer Channel & Marketing',
-          type: 'Connections & Billing'
-        },
-        {
-          name: 'Customer Experience Advocacy',
-          type: 'Connections & Billing'
-        },
-        {
-          name: 'Customer Market Operations',
-          type: 'Connections & Billing'
-        },
-        {
-          name: 'Product & Portfolio',
-          type: 'Connections & Billing'
-        }
-      ];
-    } else if (input === '2') {
-      this.cardData = [
-        {
-          name: 'Channel Strategy & Marketing',
-          type: 'Connections & Billing'
-        },
-        {
-          name: 'Customer Solutions',
-          type: 'Connections & Billing'
-        },
-        {
-          name: 'Digital Sales & Service',
-          type: 'Connections & Billing'
-        },
-        {
-          name: 'perth Energy',
-          type: 'Connections & Billing'
-        }
-      ];
-    } else if (input === '3') {
-      this.cardData = [
-        {
-          name: 'Brand',
-          type: 'Connections & Billing'
-        },
-        {
-          name: 'Customer Experience Delivery',
-          type: 'Connections & Billing'
-        },
-        {
-          name: 'Customer Policy',
-          type: 'Connections & Billing'
-        },
-        {
-          name: 'Customer Strategy & Insights',
-          type: 'Connections & Billing'
-        }
-      ];
-    } else if (input === '4') {
-      this.cardData = [
-        {
-          name: 'Compliance, Risk & Assurance',
-          type: 'Connections & Billing'
-        },
-        {
-          name: 'Connection & Billing',
-          type: 'Connections & Billing'
-        },
-        {
-          name: 'Credit & Affordability',
-          type: 'Connections & Billing'
-        },
-        {
-          name: 'Customer Engagement & Performance',
-          type: 'Connections & Billing'
-        }
-      ];
-    } else if (input === '5') {
-      this.cardData = [
-        {
-          name: 'Customer Pricing',
-          type: 'Connections & Billing'
-        },
-        {
-          name: 'Emerging Products',
-          type: 'Connections & Billing'
-        },
-        {
-          name: 'Product & Proposition',
-          type: 'Connections & Billing'
-        },
-        {
-          name: 'Product Strategy & Loyalty',
-          type: 'Connections & Billing'
-        }
-      ];
-    }
-    this.selectedTab = input;
   }
 
   goToReports() {

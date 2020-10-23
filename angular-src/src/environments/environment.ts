@@ -8,7 +8,10 @@ export const environment = {
   socialLogin: {
     'facebook': '223045385190067',
     'google': '1086867360709-69ko7vlgcc3uuq8a42dmmvgjng1vg02l.apps.googleusercontent.com'
-  }
+  },
+  clientId: '8c07b072-769b-4644-bc93-396ea8f60dda',
+  authority: 'https://login.microsoftonline.com/af23612e-ff6b-4828-9293-0b2542fff338/',
+  redirectUrl: 'http://localhost:4200/home-page'
 };
 
 /*

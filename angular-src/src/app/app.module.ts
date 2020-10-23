@@ -14,53 +14,85 @@ import { RegisterComponent } from './components/register/register.component';
 import { UserPageComponent } from './components/user-page/user-page.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { HomePageComponent } from './components/home-page/home-page.component';
+import { SpinnerComponent } from './components/spinner/spinner.component';
+
 import { UserSearchComponent } from './components/user-search/user-search.component';
 import { CoreModule } from './core/core.module';
 import { SharedModule } from './shared/shared.module';
+import { LoaderService } from './components/providers/loaderService';
+import { environment } from '../environments/environment';
+import { Configuration } from 'msal';
+import {
+  MsalModule,
+  MsalInterceptor,
+  MSAL_CONFIG,
+  MSAL_CONFIG_ANGULAR,
+  MsalService,
+  MsalAngularConfiguration
+} from '@azure/msal-angular';
+import { MsalGuard } from '@azure/msal-angular';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+
+function MSALConfigFactory(): Configuration {
+  return {
+    auth: {
+      clientId: environment.clientId,
+      authority: environment.authority,
+      validateAuthority: true,
+      redirectUri: environment.redirectUrl,
+      postLogoutRedirectUri: environment.redirectUrl,
+      navigateToLoginRequestUrl: true
+    },
+    cache: {
+      storeAuthStateInCookie: false,
+    }
+  };
+}
+
+function MSALAngularConfigFactory(): MsalAngularConfiguration {
+  return {
+    popUp: false
+  };
+}
 
 const routes: Route[] = [
   {
     path: '',
     pathMatch: 'full',
-    component: HomeComponent,
-  },
-  {
-    path: 'login',
-    component: LoginComponent,
+    component: HomePageComponent,
+    canActivate: [MsalGuard]
   },
   {
     path: 'example',
     pathMatch: 'full',
     component: ExamplePageComponent,
-  },
-  {
-    path: 'register',
-    component: RegisterComponent,
+    canActivate: [MsalGuard]
   },
   {
     path: 'user',
     component: UserPageComponent,
-    // canActivate: [AuthGuardService],
+    canActivate: [MsalGuard],
   },
   {
     path: 'user/:search',
     component: UserPageComponent,
-    // canActivate: [AuthGuardService],
+    canActivate: [MsalGuard]
+
   },
   {
     path: 'user-search',
     component: UserSearchComponent,
-    // canActivate: [AuthGuardService],
+    canActivate: [MsalGuard]
   },
   {
     path: 'home-page',
     component: HomePageComponent,
-    // canActivate: [AuthGuardService],
+    canActivate: [MsalGuard]
   },
   {
     path: 'admin',
     component: UserPageComponent,
-    // canActivate: [AuthGuardService],
+    canActivate: [MsalGuard],
     data: { roles: ['admin'] },
   },
 ];
@@ -75,7 +107,8 @@ const routes: Route[] = [
     UserPageComponent,
     RegisterComponent,
     SidebarComponent,
-    HomePageComponent
+    HomePageComponent,
+    SpinnerComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'app-root' }),
@@ -85,8 +118,27 @@ const routes: Route[] = [
     CoreModule,
     RouterModule.forRoot(routes, { enableTracing: false, initialNavigation: 'enabled' }),
     FormsModule,
+    MsalModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: MsalInterceptor,
+      multi: true
+    },
+    {
+      provide: MSAL_CONFIG,
+      useFactory: MSALConfigFactory
+    },
+    {
+      provide: MSAL_CONFIG_ANGULAR,
+      useFactory: MSALAngularConfigFactory
+    },
+    MsalService,
+    LoaderService
+  ],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+
+export class AppModule { }
+

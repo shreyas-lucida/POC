@@ -5,18 +5,18 @@
         <div class="container-fluid">
             <div class="top-card">
                 <div class="row w-100 mx-auto d-flex p-2">
-                    <p class="my-auto ml-3">C & I Customer Report</p>
+                    <p class="my-auto ml-3">{{selectedSubCat}} Report</p>
                     <img class="ml-auto logo-top" src="../../../assets/logo.png">
                 </div>
             </div>
         </div>
-        <div class="container-fluid">
-            <div class="row mx-auto my-4 w-100 border-bottom">
-                <button type="button" class="btn btn-transparent mr-3 font-14px" (click)="goBack()">Back</button>
-                <button type="button" class="btn btn-transparent border-bottom-custom font-14px">C & I Customer
+        <div class="container-fluid d-flex">
+            <div class="row mx-auto my-4 w-100">
+                <button type="button" class="btn btn-transparent mr-3 font-14px" (click)="goBack()">{{selectedSubCat}}</button>
+                <button type="button" class="btn btn-transparent border-bottom-custom font-14px">{{selectedSubCat}}
                     Report</button>
             </div>
-            <div class="search float-right w-25">
+            <div class="search float-right w-25 my-auto">
                 <i class="fa fa-search icon"></i>
                 <input class="w-100" placeholder="Search" [(ngModel)]="searchValue" (ngModelChange)="search()">
             </div>
@@ -29,43 +29,34 @@
                         <div class="modal-content" *ngIf="selectedItem === cardItem" [@myAnimation]="selectedItem === cardItem">
                         <div class="modal-body">
                             <div class="row d-flex w-100 mx-auto">
-                                <p class="w-75 header font-weight-700 font-20px my-auto">{{selectedItem.name}}</p>
+                                <p class="w-75 header font-weight-700 font-20px my-auto">{{selectedItem.reportsname}}</p>
                                 <span class="ml-auto">
+                                    <p class="daily-button mb-2">Daily</p>
                                     <img src="../../../assets/chart.png">
                                 </span>
+                                <p class="type-box"> {{cardItem.reportstype}} </p>
                             </div>
-                            <hr class="mb-0">
-                            <div class="row mx-auto w-100 d-block my-1">
-                                <p class="font-11px color-purple mb-1">Refresh Frequency</p>
-                                <p class="font-10px">Daily</p>
+                            <div class="row mx-auto w-100 my-auto">
+                                <p class="description my-3 ">{{cardItem.reportsdescription}}</p>
+                                <div class="col-12 d-flex">
+                                    <button type="button" class="btn btn-grey ml-auto" data-toggle="modal"
+                                        data-target="#myModal" (click)="selectedCard(cardItem)">Find out more</button>
+                                    <button class="btn btn-blue ml-auto">Access</button>
+                                </div>
                             </div>
-                            <div class="row mx-auto w-100 d-block my-1">
-                                <p class="font-11px color-purple mb-1">Description</p>
-                                <p class="font-10px">{{selectedItem.description}}</p>
-                            </div>
-                            <div class="row mx-auto w-100 d-block my-1">
-                                <p class="font-11px color-purple mb-1">Report Owner</p>
-                                <p class="font-10px">{{selectedItem.reportowner}}</p>
-                            </div>
-
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-border w-100" (click)="selectedItem = ''">Back</button>
-                            <button type="button" class="btn btn-border w-100" (click)="selectedItem = ''">Access
-                                Report</button>
                         </div>
                     </div>
                     <div *ngIf="selectedItem !== cardItem" >
                         <div class="row card-blue d-flex w-100 mx-auto p-2">
-                            <p class="w-75 my-auto">{{cardItem.name}}</p>
+                            <p class="w-75 my-auto">{{cardItem.reportsname}}</p>
                             <span class="ml-auto">
                                 <p class="daily-button mb-2">Daily</p>
                                 <img src="../../../assets/chart.png">
                             </span>
-                            <p class="type-box"> {{cardItem.type}} </p>
+                            <p class="type-box"> {{cardItem.reportstype}} </p>
                         </div>
                         <div class="row mx-auto w-100 my-auto">
-                            <p class="description my-3 ">{{cardItem.description}}</p>
+                            <p class="description my-3 ">{{cardItem.reportsdescription}}</p>
                             <div class="col-12 d-flex">
                                 <button type="button" class="btn btn-grey ml-auto" data-toggle="modal"
                                     data-target="#myModal" (click)="selectedCard(cardItem)">Find out more</button>
@@ -77,7 +68,8 @@
                 </div>
             </div>
             <div class="w-100" *ngIf="cardData && cardData.length > 8">
-                <button class="float-right mb-3 see-more mx-5" (click)="seeMoreOrLess()">{{seeMore?'See less ':'See more'}}</button>
+                <button class="float-right mb-3 see-more mx-5"
+                    (click)="seeMoreOrLess()">{{seeMore?'See less ':'See more'}}</button>
             </div>
         </div>
     </div>

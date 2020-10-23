@@ -9,6 +9,7 @@ import {
 } from '@angular/router';
 import { LoadingBarService } from '@ngx-loading-bar/core';
 import { AppService } from '@services';
+import { LoaderService } from './components/providers/loaderService';
 
 @Component({
   selector: 'app-root',
@@ -16,13 +17,19 @@ import { AppService } from '@services';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
+show;
+
   constructor(
     private router: Router,
     private loadingBarService: LoadingBarService,
     public appService: AppService,
+    public loaderService: LoaderService,
     @Inject(PLATFORM_ID) private platformId: unknown,
     @Inject(APP_ID) private appId: string
   ) {
+    loaderService.getloader().subscribe((res)=>{
+      this.show = res ;
+    })
     if (isPlatformBrowser(platformId))
       this.router.events.subscribe(this.navigationInterceptor.bind(this));
   }
