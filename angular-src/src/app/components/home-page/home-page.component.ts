@@ -74,7 +74,8 @@ export class HomePageComponent implements OnInit {
     });
   }
 
-  goToReports() {
+  goToReports(value) {
+    this.apiService.setCategory(value);
     this.router.navigateByUrl('/category');
   }
 

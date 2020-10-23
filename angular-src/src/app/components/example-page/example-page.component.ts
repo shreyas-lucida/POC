@@ -14,6 +14,8 @@ export class ExamplePageComponent implements OnInit {
   cardData: any[];
   selectedCardData: any;
   displayHeading = '';
+  selectedData;
+  selectedCardData1: any;
   constructor(private _location: Location,
     private router: Router,
     private apiService: ApiService,
@@ -21,6 +23,10 @@ export class ExamplePageComponent implements OnInit {
   }
   ngOnInit(): void {
     this.pocTest();
+    this.apiService.getCategory().subscribe((res) => {
+      // console.log('res', res)
+      this.selectedData = res;
+    })
   }
 
   pocTest(): void {
@@ -66,23 +72,31 @@ export class ExamplePageComponent implements OnInit {
           firstLevelStack.push(cat);
         });
         this.cardData = firstLevelStack;
-        this.selectedItem(0);
+        this.selectedItem(0, this.selectedData);
       }
       this.loaderService.hide();
     });
   }
 
-  selectedItem(input) {
-    this.selectedCardData = this.cardData[input]['children'];
-    this.displayHeading = this.cardData[input]['category'];
+  selectedItem(input, category) {
+    this.selectedCardData1 = this.cardData[input]['children'];
+    this.selectedData = category;
+    let data = this.cardData.find((res) => {
+      return res.category === category;
+    })
+    this.selectedCardData = data['children']
+    this.displayHeading = data['category'];
+    // console.log('data', data)
     this.selectedTab = input;
     sessionStorage.setItem('cat', input);
-
+    // console.log('selecteddata', this.selectedCardData)
+    // console.log('this.selectedCardData1', this.selectedCardData1)
+    // this.displayHeading = this.cardData[input]['category'];
   }
 
   goToReports(input) {
     this.router.navigateByUrl('/reports');
-    sessionStorage.setItem('subCat', this.selectedCardData[input]['subcategory']);
+    sessionStorage.setItem('subCat', this.selectedCardData1[input]['subcategory']);
 
   }
 

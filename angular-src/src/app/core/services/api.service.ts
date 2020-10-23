@@ -1,4 +1,4 @@
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
@@ -8,7 +8,10 @@ import { environment } from '../../../environments/environment';
 
 @Injectable()
 export class ApiService {
-  constructor(private httpService: HttpClient) {}
+  activeCategory;
+  constructor(private httpService: HttpClient) {
+    this.activeCategory = new BehaviorSubject(null);
+  }
 
   get serverUrl(): string {
     return environment.apiServer;
@@ -60,5 +63,12 @@ export class ApiService {
   testPOC(): Observable<any> {
     const url = this.getApiEndpoint(`test/`);
     return this.httpService.get<any>(url);
+  }
+
+  setCategory(category) {
+    this.activeCategory.next(category)
+  }
+  getCategory() {
+    return this.activeCategory.asObservable();
   }
 }
