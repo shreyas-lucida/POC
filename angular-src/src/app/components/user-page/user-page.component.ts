@@ -3,7 +3,6 @@ import { ToastrService } from 'ngx-toastr';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Location } from '@angular/common';
-import { ActivatedRoute } from '@angular/router';
 
 import { UserProfile } from '../../../../../shared/models/user-profile';
 import { AppService, AuthService, ApiService } from '../../core/services';
@@ -47,7 +46,6 @@ export class UserPageComponent implements OnInit {
     private authService: AuthService,
     private apiService: ApiService,
     private _location: Location,
-    private route: ActivatedRoute,
     private loaderService: LoaderService
 
   ) {
@@ -60,9 +58,6 @@ export class UserPageComponent implements OnInit {
     return this.appService.user;
   }
   ngOnInit() {
-    this.route.params.subscribe(params =>
-      this.searchValue = params.search ? params.search : ''
-    );
     this.pocTest1();
   }
 
