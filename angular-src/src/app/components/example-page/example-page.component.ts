@@ -14,6 +14,8 @@ export class ExamplePageComponent implements OnInit {
   cardData: any[];
   selectedCardData: any;
   displayHeading = '';
+  selectedData;
+  selectedCardData1: any;
   constructor(private _location: Location,
     private router: Router,
     private apiService: ApiService,
@@ -21,6 +23,10 @@ export class ExamplePageComponent implements OnInit {
   }
   ngOnInit(): void {
     this.pocTest();
+    this.apiService.getCategory().subscribe((res) => {
+      // console.log('res', res)
+      this.selectedData = res;
+    })
   }
 
   pocTest(): void {
@@ -74,15 +80,14 @@ export class ExamplePageComponent implements OnInit {
   }
 
   selectedItem(input) {
-    this.selectedCardData = this.cardData[input]['children'];
     this.displayHeading = this.cardData[input]['category'];
     this.selectedTab = input;
-
+    sessionStorage.setItem('cat', input);
   }
 
   goToReports(input) {
     this.router.navigateByUrl('/reports');
-    sessionStorage.setItem('subCat', this.selectedCardData[input]['subcategory']);
+    sessionStorage.setItem('subCat', this.selectedCardData1[input]['subcategory']);
 
   }
 
