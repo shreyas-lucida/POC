@@ -11,8 +11,8 @@ export class UserSearchComponent implements OnInit {
   constructor(private router: Router) { }
 
   ngOnInit(): void {
-    
   }
+  
   search(value) {
     this.router.navigate([`user/${value}`]);
   }
