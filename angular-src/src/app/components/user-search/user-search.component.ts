@@ -3,7 +3,6 @@ import { ToastrService } from 'ngx-toastr';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Location } from '@angular/common';
-import { ActivatedRoute } from '@angular/router';
 
 import { UserProfile } from '../../../../../shared/models/user-profile';
 import { AppService, AuthService, ApiService } from '../../core/services';
@@ -48,7 +47,6 @@ export class UserSearchComponent implements OnInit {
     private authService: AuthService,
     private apiService: ApiService,
     private _location: Location,
-    private route: ActivatedRoute,
     private loaderService: LoaderService
 
   ) {
@@ -71,7 +69,16 @@ export class UserSearchComponent implements OnInit {
     this.loaderService.show();
     this.apiService.testPOC().subscribe(data => {
       if (data.status === 'ok') {
-        this.users = data.data['card'][2];
+        let TestData =data.data['card'][2]
+        TestData.forEach((element, i) => {
+          if (element.category.length === 0) {
+            element.category = TestData[i - 1]['category'];
+          }
+          if (element.subcategory.length === 0) {
+            element.subcategory = TestData[i - 1]['subcategory'];
+          }
+        });
+        this.users = TestData;
       }
       this.loaderService.hide();
     });
