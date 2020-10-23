@@ -8,6 +8,7 @@ import { ActivatedRoute } from '@angular/router';
 import { UserProfile } from '../../../../../shared/models/user-profile';
 import { AppService, AuthService, ApiService } from '../../core/services';
 import _ from 'lodash';
+import { LoaderService } from '../providers/loaderService';
 
 @Component({
   selector: 'app-user-page',
@@ -31,7 +32,8 @@ export class UserPageComponent implements OnInit {
     private authService: AuthService,
     private apiService: ApiService,
     private _location: Location,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private loaderService: LoaderService
 
   ) {
     this.selectedSubCat = sessionStorage.getItem('subCat');
@@ -50,6 +52,7 @@ export class UserPageComponent implements OnInit {
   }
 
   pocTest1(): void {
+    this.loaderService.show();
     this.apiService.testPOC().subscribe(data => {
       if (data.status === 'ok') {
         // this.cardData = data.data['card'][1];
@@ -108,6 +111,7 @@ export class UserPageComponent implements OnInit {
         this.users = this.cardData;
         this.search()
       }
+      this.loaderService.hide();
     });
   }
 
