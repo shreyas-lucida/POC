@@ -59,7 +59,7 @@ const routes: Route[] = [
   {
     path: '',
     pathMatch: 'full',
-    component: HomePageComponent,
+    redirectTo: 'home',
     canActivate: [MsalGuard]
   },
   {
@@ -74,13 +74,7 @@ const routes: Route[] = [
     canActivate: [MsalGuard],
   },
   {
-    path: 'user/:search',
-    component: UserPageComponent,
-    canActivate: [MsalGuard]
-
-  },
-  {
-    path: 'user-search',
+    path: 'reports-search',
     component: UserSearchComponent,
     canActivate: [MsalGuard]
   },

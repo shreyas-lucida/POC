@@ -11,7 +11,7 @@ export class SidebarComponent implements OnInit {
     {title: 'home', icons: 'fa fa-home', path: '/home'},
     // {title: 'graph', icons: 'fa fa-chart-bar'},
     // {title: 'appointments', icons: 'fa fa-calendar-day'},
-    {title: 'enquiries', icons: 'fa fa-search', path: '/user-search'},
+    {title: 'enquiries', icons: 'fa fa-search', path: '/reports-search'},
     {title: 'settings', icons: 'fa fa-cog'},
   ];
   isSideBarOpen = false;
