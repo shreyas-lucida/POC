@@ -66,7 +66,8 @@ export class ExamplePageComponent implements OnInit {
           firstLevelStack.push(cat);
         });
         this.cardData = firstLevelStack;
-        this.selectedItem(0);
+        let cat = sessionStorage.getItem('cat');
+        this.selectedItem(cat);
       }
       this.loaderService.hide();
     });
@@ -76,7 +77,6 @@ export class ExamplePageComponent implements OnInit {
     this.selectedCardData = this.cardData[input]['children'];
     this.displayHeading = this.cardData[input]['category'];
     this.selectedTab = input;
-    sessionStorage.setItem('cat', input);
 
   }
 

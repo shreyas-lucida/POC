@@ -74,7 +74,8 @@ export class HomePageComponent implements OnInit {
     });
   }
 
-  goToReports() {
+  goToReports(input) {
+    sessionStorage.setItem('cat', input);
     this.router.navigateByUrl('/category');
   }
 
