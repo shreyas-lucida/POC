@@ -81,7 +81,7 @@ export class ExamplePageComponent implements OnInit {
   }
 
   goToReports(input) {
-    this.router.navigateByUrl('/user');
+    this.router.navigateByUrl('/reports');
     sessionStorage.setItem('subCat', this.selectedCardData[input]['subcategory']);
 
   }

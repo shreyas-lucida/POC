@@ -75,7 +75,7 @@ export class HomePageComponent implements OnInit {
   }
 
   goToReports() {
-    this.router.navigateByUrl('/example');
+    this.router.navigateByUrl('/category');
   }
 
   goBack() {

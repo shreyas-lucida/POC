@@ -63,13 +63,13 @@ const routes: Route[] = [
     canActivate: [MsalGuard]
   },
   {
-    path: 'example',
+    path: 'category',
     pathMatch: 'full',
     component: ExamplePageComponent,
     canActivate: [MsalGuard]
   },
   {
-    path: 'user',
+    path: 'reports',
     component: UserPageComponent,
     canActivate: [MsalGuard],
   },
@@ -85,16 +85,10 @@ const routes: Route[] = [
     canActivate: [MsalGuard]
   },
   {
-    path: 'home-page',
+    path: 'home',
     component: HomePageComponent,
     canActivate: [MsalGuard]
-  },
-  {
-    path: 'admin',
-    component: UserPageComponent,
-    canActivate: [MsalGuard],
-    data: { roles: ['admin'] },
-  },
+  }
 ];
 
 @NgModule({

@@ -8,7 +8,7 @@ import   {MsalService} from '@azure/msal-angular';
 })
 export class SidebarComponent implements OnInit {
   sidebarItems = [
-    {title: 'home', icons: 'fa fa-home', path: '/home-page'},
+    {title: 'home', icons: 'fa fa-home', path: '/home'},
     // {title: 'graph', icons: 'fa fa-chart-bar'},
     // {title: 'appointments', icons: 'fa fa-calendar-day'},
     {title: 'enquiries', icons: 'fa fa-search', path: '/user-search'},

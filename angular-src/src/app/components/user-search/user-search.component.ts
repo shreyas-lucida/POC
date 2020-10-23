@@ -14,6 +14,6 @@ export class UserSearchComponent implements OnInit {
   }
   
   search(value) {
-    this.router.navigate([`user/${value}`]);
+    this.router.navigate([`reports/${value}`]);
   }
 }
