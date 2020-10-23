@@ -59,7 +59,7 @@ const routes: Route[] = [
   {
     path: '',
     pathMatch: 'full',
-    component: HomePageComponent,
+    redirectTo: 'home',
     canActivate: [MsalGuard]
   },
   {
