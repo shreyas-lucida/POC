@@ -11,7 +11,7 @@ export const environment = {
   },
   clientId: '8c07b072-769b-4644-bc93-396ea8f60dda',
   authority: 'https://login.microsoftonline.com/af23612e-ff6b-4828-9293-0b2542fff338/',
-  redirectUrl: 'http://localhost:4200/home'
+  redirectUrl: 'https://alg.netlify.app/home'
 };
 
 /*
