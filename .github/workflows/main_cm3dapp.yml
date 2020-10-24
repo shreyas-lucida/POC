@@ -29,7 +29,4 @@ jobs:
     - name: 'Deploy to Azure Web App'
       uses: azure/webapps-deploy@v2
       with:
-        app-name: 'cm3dapp'
-        slot-name: 'production'
-        publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_A278D8F34F08428FB7BC6E93D1B53A6F }}
-        package: .
+        publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
