@@ -31,5 +31,5 @@ jobs:
       with:
         app-name: 'cm3dapp'
         slot-name: 'production'
-        publish-profile: ${{ secrets.AzureAppService_PublishProfile_a278d8f34f08428fb7bc6e93d1b53a6f }}
+        publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_A278D8F34F08428FB7BC6E93D1B53A6F }}
         package: .
