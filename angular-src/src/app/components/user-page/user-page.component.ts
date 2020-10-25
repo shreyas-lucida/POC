@@ -15,15 +15,15 @@ import { LoaderService } from '../providers/loaderService';
   animations: [
     trigger(
       'myAnimation', [
-        transition(':enter', [
-          style({transform: 'translateY(100%)', opacity: 1}),
-          animate('250ms', style({transform: 'translateY(0)', opacity: 1}))
-        ]),
-        transition(':leave', [
-          style({transform: 'translateY(0)', 'opacity': 1}),
-          animate('250ms', style({transform: 'translateY(100%)', opacity: 1}))
-        ])
-      ],
+      transition(':enter', [
+        style({ transform: 'translateY(100%)', opacity: 1 }),
+        animate('250ms', style({ transform: 'translateY(0)', opacity: 1 }))
+      ]),
+      transition(':leave', [
+        style({ transform: 'translateY(0)', 'opacity': 1 }),
+        animate('250ms', style({ transform: 'translateY(100%)', opacity: 1 }))
+      ])
+    ],
     )
   ],
   templateUrl: './user-page.component.html',
@@ -38,6 +38,7 @@ export class UserPageComponent implements OnInit {
   seeMore: boolean;
   selectedSubCat = '';
   selectedCat = '';
+  selectedCatName = '';
 
   constructor(
     private router: Router,
@@ -51,6 +52,8 @@ export class UserPageComponent implements OnInit {
   ) {
     this.selectedSubCat = sessionStorage.getItem('subCat');
     this.selectedCat = sessionStorage.getItem('cat');
+    this.selectedCatName = sessionStorage.getItem('cat_name');
+
 
   }
 
@@ -61,68 +64,44 @@ export class UserPageComponent implements OnInit {
     this.pocTest1();
   }
 
+  groupBy(array, f) {
+    var groups = {};
+    array.forEach(function (o) {
+      var group = JSON.stringify(f(o));
+      groups[group] = groups[group] || [];
+      groups[group].push(o);
+    });
+    return Object.keys(groups).map(function (group) {
+      return groups[group];
+    })
+  }
+
+
+
   pocTest1(): void {
     this.loaderService.show();
     this.apiService.testPOC().subscribe(data => {
       if (data.status === 'ok') {
-        // this.cardData = data.data['card'][1];
-        let TestData = data.data['card'][2];
-        let arr = [];
-        let arrSub = [];
-        TestData.forEach((element, i) => {
-          if (element.category.length === 0) {
-            element.category = TestData[i - 1]['category'];
-          } else {
-            arr.push(element);
-          }
-          if (element.categorydescription.length === 0) {
-            element.categorydescription = TestData[i - 1]['categorydescription'];
-          }
-          if (element.categorytype.length === 0) {
-            element.categorytype = TestData[i - 1]['categorytype'];
-          }
-          if (element.subcategory.length === 0) {
-            element.subcategory = TestData[i - 1]['subcategory'];
-          } else {
-            arrSub.push(element);
-          }
-          if (element.subcategorydescription.length === 0) {
-            element.subcategorydescription = TestData[i - 1]['subcategorydescription'];
-          }
-          if (element.subcategorytype.length === 0) {
-            element.subcategorytype = TestData[i - 1]['subcategorytype'];
+        let dataFromSheet = data.data['card'][0];
+
+        let result = this.groupBy(dataFromSheet, function (item) {
+          return [item.category, item.subcategory];
+        });
+        console.log(result)
+        result.forEach(element => {
+          if (element[0]['category'] === this.selectedCatName && element[0]['subcategory'] === this.selectedSubCat) {
+            this.cardData = element;
           }
         });
-        let firstLevelStack = [];
-        let secondLevelStack = [];
-        arr.forEach(cat => {
-          cat['children'] = [];
-          arrSub.forEach(subcat => {
-            if (cat.category === subcat.category) {
-              cat['children'].push(subcat);
-            }
-          });
-          firstLevelStack.push(cat);
-        });
-        firstLevelStack.forEach(element => {
-          element['children'].forEach(element1 => {
-            element1['subchildren'] = [];
-            TestData.forEach(element2 => {
-              if (element1['subcategory'] === element2['subcategory'] && element1['category'] === element2['category']) {
-                element['subchildren'].push(element2);
-              }
-            });
-          });
-          secondLevelStack.push(element);
-        });
-        var grouped = _.mapValues(_.groupBy(secondLevelStack[this.selectedCat]['subchildren'], 'subcategory'),
-          clist => clist.map(car => _.omit(car, 'subcategory')));
-        this.cardData = grouped[this.selectedSubCat];
         this.users = this.cardData;
-        this.search()
+        this.search();
       }
       this.loaderService.hide();
     });
+  }
+
+  goToLink(input) {
+    window.open(input['reportslink'], "_blank");
   }
 
   logout(): void {
@@ -143,8 +122,6 @@ export class UserPageComponent implements OnInit {
     this._location.back();
   }
   search() {
-    console.log(this.searchValue);
-
     let value = this.searchValue.toLowerCase()
     let filteredData = [] as any
     this.users.map((data: any) => {

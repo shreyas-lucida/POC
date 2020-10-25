@@ -8,7 +8,6 @@ import { AuthGuardService } from '@services';
 
 import { AppComponent } from './app.component';
 import { ExamplePageComponent } from './components/example-page/example-page.component';
-import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { UserPageComponent } from './components/user-page/user-page.component';
@@ -95,7 +94,6 @@ const routes: Route[] = [
   declarations: [
     AppComponent,
     UserSearchComponent,
-    HomeComponent,
     ExamplePageComponent,
     LoginComponent,
     UserPageComponent,

@@ -33,39 +33,29 @@ export class ExamplePageComponent implements OnInit {
     this.loaderService.show();
     this.apiService.testPOC().subscribe(data => {
       if (data.status === 'ok') {
-        // this.cardData = data.data['card'][1];
-        let TestData = data.data['card'][2];
-        let arr = [];
-        let arrSub = [];
-        TestData.forEach((element, i) => {
-          if (element.category.length === 0) {
-            element.category = TestData[i - 1]['category'];
-          } else {
-            arr.push(element);
-          }
-          if (element.categorydescription.length === 0) {
-            element.categorydescription = TestData[i - 1]['categorydescription'];
-          }
-          if (element.categorytype.length === 0) {
-            element.categorytype = TestData[i - 1]['categorytype'];
-          }
-          if (element.subcategory.length === 0) {
-            element.subcategory = TestData[i - 1]['subcategory'];
-          } else {
-            arrSub.push(element);
-          }
-          if (element.subcategorydescription.length === 0) {
-            element.subcategorydescription = TestData[i - 1]['subcategorydescription'];
-          }
-          if (element.subcategorytype.length === 0) {
-            element.subcategorytype = TestData[i - 1]['subcategorytype'];
-          }
-        });
+        let dataFromSheet = data.data['card'][0];
+        let obj = {};
+        for (let i = 0, len = dataFromSheet.length; i < len; i++)
+          obj[dataFromSheet[i]['category']] = dataFromSheet[i];
+
+        dataFromSheet = new Array();
+        for (let key in obj)
+          dataFromSheet.push(obj[key]);
+
+        let dataFromSheet1 = data.data['card'][0];
+        let obj1 = {};
+        for (let j = 0, len = dataFromSheet1.length; j < len; j++)
+          obj1[dataFromSheet1[j]['subcategory']] = dataFromSheet1[j];
+
+        dataFromSheet1 = new Array();
+        for (let key in obj1)
+          dataFromSheet1.push(obj1[key]);
+
         let firstLevelStack = [];
-        arr.forEach(cat => {
+        dataFromSheet.forEach(cat => {
           cat['children'] = [];
-          arrSub.forEach(subcat => {
-            if (cat.category === subcat.category) {
+          dataFromSheet1.forEach(subcat => {
+            if (cat['category'] === subcat['category']) {
               cat['children'].push(subcat);
             }
           });
@@ -73,17 +63,20 @@ export class ExamplePageComponent implements OnInit {
         });
         this.cardData = firstLevelStack;
         let cat = sessionStorage.getItem('cat');
-        this.selectedItem(cat);
+        this.selectedItem(cat, '');
       }
       this.loaderService.hide();
     });
   }
 
-  selectedItem(input) {
+  selectedItem(input, name) {
     this.displayHeading = this.cardData[input]['category'];
-    this.selectedCardData =  this.cardData[input]['children'];
+    this.selectedCardData = this.cardData[input]['children'];
     this.selectedTab = input;
     sessionStorage.setItem('cat', input);
+    if (name.length > 0) {
+      sessionStorage.setItem('cat_name', name);
+    }
   }
 
   goToReports(input) {

@@ -13,7 +13,7 @@
             <ul class="nav">
                 <li class="nav-item" *ngFor="let item of cardData; index as i">
                     <button type="button" class="btn btn-transparent font-14px" (click)="selectedItem(i,item.category)"
-                        [ngClass]="{'border-bottom-custom': item.category === selectedData }">{{item.category}}</button>
+                        [ngClass]="{'border-bottom-custom': i === selectedTab }">{{item.category}}</button>
                 </li>
                 
             </ul>

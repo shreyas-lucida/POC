@@ -18,7 +18,7 @@ export class HomePageComponent implements OnInit {
     private loaderService: LoaderService) {
   }
   ngOnInit(): void {
-    this.pocTest();
+    this.getData();
     sessionStorage.removeItem("cat");
     sessionStorage.removeItem("subCat");
     localStorage.removeItem("accessToken");
@@ -26,60 +26,27 @@ export class HomePageComponent implements OnInit {
 
   }
 
-  pocTest(): void {
+  getData(): void {
     this.loaderService.show();
     this.apiService.testPOC().subscribe(data => {
       if (data.status === 'ok') {
-        // this.cardData = data.data['card'][1];
-        let TestData = data.data['card'][2];
-        let arr = [];
-        let arrSub = [];
-        TestData.forEach((element, i) => {
-          if (element.category.length === 0) {
-            element.category = TestData[i - 1]['category'];
-          } else {
-            arr.push(element);
-          }
-          if (element.categorydescription.length === 0) {
-            element.categorydescription = TestData[i - 1]['categorydescription'];
-          }
-          if (element.categorytype.length === 0) {
-            element.categorytype = TestData[i - 1]['categorytype'];
-          }
-          if (element.subcategory.length === 0) {
-            element.subcategory = TestData[i - 1]['subcategory'];
-          } else {
-            arrSub.push(element);
-          }
-          if (element.subcategorydescription.length === 0) {
-            element.subcategorydescription = TestData[i - 1]['subcategorydescription'];
-          }
-          if (element.subcategorytype.length === 0) {
-            element.subcategorytype = TestData[i - 1]['subcategorytype'];
-          }
-        });
-        let firstLevelStack = [];
-        arr.forEach(cat => {
-          cat['children'] = [];
-          TestData.forEach(subcat => {
-            if (cat.category === subcat.category) {
-              cat['children'].push(subcat);
-            }
-          });
-          firstLevelStack.push(cat);
-        });
-        this.cardData = firstLevelStack;
+        let dataFromSheet = data.data['card'][0];
+        let obj = {};
+        for (let i = 0, len = dataFromSheet.length; i < len; i++)
+          obj[dataFromSheet[i]['category']] = dataFromSheet[i];
+
+        dataFromSheet = new Array();
+        for (let key in obj)
+          dataFromSheet.push(obj[key]);
+        this.cardData = dataFromSheet;
       }
       this.loaderService.hide();
     });
   }
 
-  goToReports(input) {
+  goToReports(input, name) {
     sessionStorage.setItem('cat', input);
+    sessionStorage.setItem('cat_name', name);
     this.router.navigateByUrl('/category');
-  }
-
-  goBack() {
-    this._location.back();
   }
 }
