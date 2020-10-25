@@ -69,7 +69,7 @@ export class UserSearchComponent implements OnInit {
     this.loaderService.show();
     this.apiService.testPOC().subscribe(data => {
       if (data.status === 'ok') {
-        let TestData =data.data['card'][2]
+        let TestData =data.data['card'][0]
         TestData.forEach((element, i) => {
           if (element.category.length === 0) {
             element.category = TestData[i - 1]['category'];

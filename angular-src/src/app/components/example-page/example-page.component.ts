@@ -23,10 +23,6 @@ export class ExamplePageComponent implements OnInit {
   }
   ngOnInit(): void {
     this.pocTest();
-    this.apiService.getCategory().subscribe((res) => {
-      // console.log('res', res)
-      this.selectedData = res;
-    })
   }
 
   pocTest(): void {
