@@ -7,7 +7,6 @@ import superagent from 'superagent';
 import { ExpressApplication } from '@tsed/common';
 import { TestContext } from '@tsed/testing';
 
-import { IUserProfileDbModel, UserProfileDbModel } from '../models/user-profile.db.model';
 import { Server } from '../server';
 
 let expressApp: ExpressApplication;
@@ -28,10 +27,6 @@ export async function getExpressApp(): Promise<ExpressApplication> {
     ExpressApplication
   ) as ExpressApplication;
   return expressApp;
-}
-
-export async function getMockRootUserFromDB(): Promise<IUserProfileDbModel> {
-  return UserProfileDbModel.findOne({ email: 'root@mail.com' });
 }
 
 export function setAdminHeaders(

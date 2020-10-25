@@ -1,4 +1,3 @@
-import './middlewares/error-handler.middleware';
 import './pipes/class-transformer.pipe';
 import './pipes/class-validation.pipe';
 
@@ -16,8 +15,6 @@ import {
 } from '@tsed/common';
 
 import config from './config';
-import { AuthService } from './services/auth.service';
-import socialAuth from './social-auth';
 
 const rootDir = __dirname;
 
@@ -75,9 +72,6 @@ export class Server extends ServerLoader {
       this.settings.httpPort = 80; // Use port '80' (usual HTTP port) to redirect all requests
       this.use('/', httpsRedirect(true));
     }
-
-    AuthService.initMiddleware(this.expressApp);
-    socialAuth.init(this.expressApp);
 
     return null;
   }

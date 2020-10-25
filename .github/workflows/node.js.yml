@@ -13,15 +13,6 @@ jobs:
   test:
     runs-on: ubuntu-latest
 
-    services:
-      mongodb:
-        image: mongo:latest
-        env:
-          MONGO_INITDB_ROOT_USERNAME: test
-          MONGO_INITDB_ROOT_PASSWORD: test
-          MONGO_INITDB_DATABASE: admin
-        ports:
-          - 27019:27017
     strategy:
       matrix:
         node-version: [12.x]
