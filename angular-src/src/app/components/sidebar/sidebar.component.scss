@@ -27,6 +27,7 @@
   .isSideBarOpen {
       width: 380px;
       padding: 100px 1rem 1rem 1rem;
+      z-index: 9999;
   }
   .userName {
       font-weight: bold;
