@@ -59,29 +59,35 @@ const routes: Route[] = [
   {
     path: '',
     pathMatch: 'full',
-    redirectTo: 'home',
-    canActivate: [MsalGuard]
+    redirectTo: 'login',
+    // canActivate: [MsalGuard]
+  },
+  {
+    path: 'login',
+    pathMatch: 'full',
+    component: LoginComponent,
+    // canActivate: [MsalGuard]
   },
   {
     path: 'category',
     pathMatch: 'full',
     component: ExamplePageComponent,
-    canActivate: [MsalGuard]
+    // canActivate: [MsalGuard]
   },
   {
     path: 'reports',
     component: UserPageComponent,
-    canActivate: [MsalGuard],
+    // canActivate: [MsalGuard],
   },
   {
     path: 'reports-search',
     component: UserSearchComponent,
-    canActivate: [MsalGuard]
+    // canActivate: [MsalGuard]
   },
   {
     path: 'home',
     component: HomePageComponent,
-    canActivate: [MsalGuard]
+    // canActivate: [MsalGuard]
   }
 ];
 

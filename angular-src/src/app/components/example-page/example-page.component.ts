@@ -81,14 +81,14 @@ export class ExamplePageComponent implements OnInit {
 
   selectedItem(input) {
     this.displayHeading = this.cardData[input]['category'];
+    this.selectedCardData =  this.cardData[input]['children'];
     this.selectedTab = input;
     sessionStorage.setItem('cat', input);
   }
 
   goToReports(input) {
     this.router.navigateByUrl('/reports');
-    sessionStorage.setItem('subCat', this.selectedCardData1[input]['subcategory']);
-
+    sessionStorage.setItem('subCat', this.selectedCardData[input]['subcategory']);
   }
 
   goBack() {

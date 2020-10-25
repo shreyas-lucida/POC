@@ -28,8 +28,11 @@ export class SidebarComponent implements OnInit {
     });
 
     const account = this._msalService.getAccount();
-    this.name = account.name;
-    this.userName = account.userName;
+    if(account){
+      this.name = account.name;
+      this.userName = account.userName;
+    }
+   
     // this.userName =  sessionStorage.getItem("user");
 
   }

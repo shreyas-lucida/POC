@@ -32,4 +32,4 @@ jobs:
         app-name: 'cm3dapp'
         slot-name: 'production'
         publish-profile: ${{ secrets.AzureAppService_PublishProfile_99bcc84b35be4a419c959c6b93098e70 }}
-        package: .
+        package: ./dist
