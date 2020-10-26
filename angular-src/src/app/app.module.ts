@@ -7,10 +7,9 @@ import { NgtUniversalModule } from '@ng-toolkit/universal';
 import { AuthGuardService } from '@services';
 
 import { AppComponent } from './app.component';
-import { ExamplePageComponent } from './components/example-page/example-page.component';
+import { SubcatagoryComponent } from './components/sub-catagory/sub-catagory.component';
 import { LoginComponent } from './components/login/login.component';
-import { RegisterComponent } from './components/register/register.component';
-import { UserPageComponent } from './components/user-page/user-page.component';
+import { ReportsComponent } from './components/reports/reports.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { HomePageComponent } from './components/home-page/home-page.component';
 import { SpinnerComponent } from './components/spinner/spinner.component';
@@ -70,12 +69,12 @@ const routes: Route[] = [
   {
     path: 'category',
     pathMatch: 'full',
-    component: ExamplePageComponent,
+    component: SubcatagoryComponent,
     // canActivate: [MsalGuard]
   },
   {
     path: 'reports',
-    component: UserPageComponent,
+    component: ReportsComponent,
     // canActivate: [MsalGuard],
   },
   {
@@ -94,10 +93,9 @@ const routes: Route[] = [
   declarations: [
     AppComponent,
     UserSearchComponent,
-    ExamplePageComponent,
+    SubcatagoryComponent,
     LoginComponent,
-    UserPageComponent,
-    RegisterComponent,
+    ReportsComponent,
     SidebarComponent,
     HomePageComponent,
     SpinnerComponent,

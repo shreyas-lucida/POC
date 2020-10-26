@@ -5,11 +5,11 @@ import { ApiService } from '../../core/services/api.service';
 import { LoaderService } from '../providers/loaderService';
 
 @Component({
-  selector: 'app-example-page',
-  templateUrl: './example-page.component.html',
-  styleUrls: ['./example-page.component.scss'],
+  selector: 'app-sub-catagory',
+  templateUrl: './sub-catagory.component.html',
+  styleUrls: ['./sub-catagory.component.scss'],
 })
-export class ExamplePageComponent implements OnInit {
+export class SubcatagoryComponent implements OnInit {
   selectedTab = '1';
   cardData: any[];
   selectedCardData: any;

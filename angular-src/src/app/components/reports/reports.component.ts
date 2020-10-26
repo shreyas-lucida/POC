@@ -11,7 +11,7 @@ import _ from 'lodash';
 import { LoaderService } from '../providers/loaderService';
 
 @Component({
-  selector: 'app-user-page',
+  selector: 'app-reports',
   animations: [
     trigger(
       'myAnimation', [
@@ -26,10 +26,10 @@ import { LoaderService } from '../providers/loaderService';
     ],
     )
   ],
-  templateUrl: './user-page.component.html',
-  styleUrls: ['./user-page.component.scss'],
+  templateUrl: './reports.component.html',
+  styleUrls: ['./reports.component.scss'],
 })
-export class UserPageComponent implements OnInit {
+export class ReportsComponent implements OnInit {
   users: any[];
   cardData: any[];
   showDescription = false;

@@ -11,7 +11,6 @@ import { LoadingBarModule } from '@ngx-loading-bar/core';
 import { ApiService, AppService, AuthGuardService, AuthService, RequestsService } from '@services';
 
 import { SharedModule } from '../shared/shared.module';
-import { SocialLoginModule } from '../social-login/social-login.module';
 import { AppHttpInterceptor } from './app-http.interceptor';
 import { FooterComponent } from './components/footer/footer.component';
 import { HeaderComponent } from './components/header/header.component';
@@ -30,7 +29,6 @@ import { HeaderComponent } from './components/header/header.component';
     }),
     RouterModule,
     SharedModule,
-    SocialLoginModule,
   ],
   declarations: [HeaderComponent, FooterComponent],
   providers: [
@@ -49,8 +47,7 @@ import { HeaderComponent } from './components/header/header.component';
     HeaderComponent,
     FooterComponent,
     LoadingBarModule,
-    ToastrModule,
-    SocialLoginModule,
+    ToastrModule
   ],
 })
 export class CoreModule {}
