@@ -39,6 +39,7 @@ export class HomePageComponent implements OnInit {
         for (let key in obj)
           dataFromSheet.push(obj[key]);
         this.cardData = dataFromSheet;
+        console.log(this.cardData)
       }
       this.loaderService.hide();
     });

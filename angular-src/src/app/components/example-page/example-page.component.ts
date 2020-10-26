@@ -16,10 +16,13 @@ export class ExamplePageComponent implements OnInit {
   displayHeading = '';
   selectedData;
   selectedCardData1: any;
+  selectedCat: any;
   constructor(private _location: Location,
     private router: Router,
     private apiService: ApiService,
     private loaderService: LoaderService) {
+    this.selectedCat = sessionStorage.getItem('cat');
+
   }
   ngOnInit(): void {
     this.pocTest();
@@ -40,21 +43,28 @@ export class ExamplePageComponent implements OnInit {
 
         let dataFromSheet1 = data.data['card'][0];
         let obj1 = {};
-        for (let j = 0, len = dataFromSheet1.length; j < len; j++)
+        for (let j = 0, len = dataFromSheet1.length; j < len; j++) {
           obj1[dataFromSheet1[j]['subcategory']] = dataFromSheet1[j];
+        }
 
         dataFromSheet1 = new Array();
-        for (let key in obj1)
-          dataFromSheet1.push(obj1[key]);
-
+        for (let key1 in obj1) {
+          dataFromSheet1.push(obj1[key1]);
+        }
         let firstLevelStack = [];
         dataFromSheet.forEach(cat => {
-          cat['children'] = [];
+          let arr = [];
           dataFromSheet1.forEach(subcat => {
             if (cat['category'] === subcat['category']) {
-              cat['children'].push(subcat);
+              arr.push(subcat);
+            } else {
+              if (cat['subcategory'] === subcat['subcategory']) {
+                arr.push(cat);
+              }
             }
           });
+          cat['children'] = arr;
+
           firstLevelStack.push(cat);
         });
         this.cardData = firstLevelStack;
