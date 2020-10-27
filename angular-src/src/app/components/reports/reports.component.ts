@@ -6,7 +6,7 @@ import { Location } from '@angular/common';
 
 import { UserProfile } from '../../../../../shared/models/user-profile';
 import { AppService, AuthService, ApiService } from '../../core/services';
-import { animate, style, transition, trigger } from '@angular/animations';
+import { animate, state, style, transition, trigger } from '@angular/animations';
 import _ from 'lodash';
 import { LoaderService } from '../providers/loaderService';
 import { SharedService } from '../../shared/shared.service';
@@ -25,7 +25,17 @@ import { SharedService } from '../../shared/shared.service';
         animate('250ms', style({ transform: 'translateY(100%)', opacity: 1 }))
       ])
     ],
-    )
+    ),
+    trigger('flipState', [
+      state('active', style({
+        transform: 'rotateY(179deg)'
+      })),
+      state('inactive', style({
+        transform: 'rotateY(0)'
+      })),
+      transition('active => inactive', animate('600ms ease-out')),
+      transition('inactive => active', animate('600ms ease-in'))
+    ])
   ],
   templateUrl: './reports.component.html',
   styleUrls: ['./reports.component.scss'],
@@ -112,6 +122,13 @@ export class ReportsComponent implements OnInit {
     window.open(input['reportslink'], "_blank");
   }
 
+  onClickBack() {
+    this.selectedItem = '';
+    this.cardData.map(cardData => {
+      cardData.flip = 'inactive';
+      return cardData;
+    });
+ }
   logout(): void {
     this.authService.logout().then(() => {
       this.router.navigateByUrl('/');
@@ -122,8 +139,16 @@ export class ReportsComponent implements OnInit {
     });
   }
 
-  selectedCard(input) {
+  selectedCard(input, ind) {
     this.selectedItem = input;
+    this.cardData.map((cardData, i) => {
+      if (i === ind) {
+        cardData.flip = 'active';
+      } else {
+        cardData.flip = 'inactive';
+      }
+      return cardData;
+    });
   }
 
   goBack() {

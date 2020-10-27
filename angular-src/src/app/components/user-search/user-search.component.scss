@@ -155,3 +155,26 @@
   color: gray;
   font-size: 20px;
 }
+
+.tp-box {
+  -webkit-transform-style: preserve-3d;
+          transform-style: preserve-3d;
+  -webkit-transform         : transform 1s;
+      -ms-transform         : transform 1s;
+          transform         : transform 1s;
+}
+.tp-box__side {
+      .type-box { 
+          bottom: 45.5% !important;
+      }
+}
+.tp-box__front {
+  -webkit-transform : rotateY(0deg);
+  -ms-transform     : rotateY(0deg);
+  transform         : rotateY(0deg);
+}
+.tp-box__back {
+  -webkit-transform : rotateY(180deg);
+  -ms-transform     : rotateY(180deg);
+  transform         : rotateY(180deg);
+}
