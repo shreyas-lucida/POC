@@ -1,12 +1,9 @@
 import { ToastrService } from 'ngx-toastr';
 
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { Location } from '@angular/common';
-
-import { AppService, AuthService, ApiService } from '../../core/services';
 import * as XLSX from 'xlsx';
-import { LoaderService } from '../providers/loaderService';
+// import * as FileSaver from 'file-saver';
 import { SharedService } from '../../shared/shared.service';
 
 @Component({
@@ -47,8 +44,13 @@ export class settingsComponent implements OnInit {
   readAsJson() {
     let jsonData: any;
     jsonData = XLSX.utils.sheet_to_json(this.worksheet, { raw: false });
-    jsonData = JSON.stringify(jsonData);
-    this.sharedService.setExcelFile(jsonData);
-    // const data: Blob = new Blob([this.jsonData], { type: "application/json" });  
+    // jsonData = JSON.stringify(jsonData);
+    jsonData.map((object: any) => {
+      Object.keys(object).forEach(function (key) { var newKey = key.replace(/\s+/g, ''); if (object[key] && typeof object[key] === 'object') { this.replaceKeys(object[key]); } if (key !== newKey) { object[newKey] = object[key]; delete object[key]; } });
+      return data;
+    })
+    this.sharedService.excelData =jsonData;
+    const data: Blob = new Blob([jsonData], { type: "application/vnd.ms-excel;charset=utf-8" });  
+    // FileSaver.saveAs(data, 'ReportDataSheet.xls');    
   }
 }
