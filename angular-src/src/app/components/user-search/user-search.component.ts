@@ -104,7 +104,7 @@ export class UserSearchComponent implements OnInit {
 
   onClickBack() {
     this.selectedItem = '';
-    this.cardData.map(cardData => {
+    this.cardData?.map(cardData => {
       cardData.flip = 'inactive';
       return cardData;
     });
@@ -143,6 +143,7 @@ export class UserSearchComponent implements OnInit {
       }
     });
     this.cardData = filteredData;
+    this.onClickBack();
   }
   seeMoreOrLess() {
     this.seeMore = !this.seeMore;
