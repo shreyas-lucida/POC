@@ -3,6 +3,7 @@ import { Location } from '@angular/common';
 import { Router } from '@angular/router';
 import { ApiService } from '../../core/services/api.service';
 import { LoaderService } from '../providers/loaderService';
+import { SharedService } from '../../shared/shared.service';
 
 @Component({
   selector: 'app-sub-catagory',
@@ -20,6 +21,7 @@ export class SubcatagoryComponent implements OnInit {
   constructor(private _location: Location,
     private router: Router,
     private apiService: ApiService,
+    private sharedService: SharedService,
     private loaderService: LoaderService) {
     this.selectedCat = sessionStorage.getItem('cat');
 
@@ -30,21 +32,22 @@ export class SubcatagoryComponent implements OnInit {
 
   pocTest(): void {
     this.loaderService.show();
-    this.apiService.testPOC().subscribe(data => {
-      if (data.status === 'ok') {
-        let dataFromSheet = data.data['card'][0];
+    // this.apiService.testPOC().subscribe(data => {
+      if (this.sharedService.excelData) {
+        // let dataFromSheet = data.data['card'][0];
+        let dataFromSheet = this.sharedService.excelData;
         let obj = {};
         for (let i = 0, len = dataFromSheet.length; i < len; i++)
-          obj[dataFromSheet[i]['category']] = dataFromSheet[i];
+          obj[dataFromSheet[i]['Category']] = dataFromSheet[i];
 
         dataFromSheet = new Array();
         for (let key in obj)
           dataFromSheet.push(obj[key]);
 
-        let dataFromSheet1 = data.data['card'][0];
+        let dataFromSheet1 = this.sharedService.excelData;
         let obj1 = {};
         for (let j = 0, len = dataFromSheet1.length; j < len; j++) {
-          obj1[dataFromSheet1[j]['subcategory']] = dataFromSheet1[j];
+          obj1[dataFromSheet1[j]['SubCategory']] = dataFromSheet1[j];
         }
 
         dataFromSheet1 = new Array();
@@ -55,10 +58,10 @@ export class SubcatagoryComponent implements OnInit {
         dataFromSheet.forEach(cat => {
           let arr = [];
           dataFromSheet1.forEach(subcat => {
-            if (cat['category'] === subcat['category']) {
+            if (cat['Category'] === subcat['Category']) {
               arr.push(subcat);
             } else {
-              if (cat['subcategory'] === subcat['subcategory']) {
+              if (cat['SubCategory'] === subcat['SubCategory']) {
                 arr.push(cat);
               }
             }
@@ -70,13 +73,18 @@ export class SubcatagoryComponent implements OnInit {
         this.cardData = firstLevelStack;
         let cat = sessionStorage.getItem('cat');
         this.selectedItem(cat, '');
+      } else {
+        this.sharedService.readExcel()
+        setTimeout(() => {
+          this.pocTest()
+        }, 2000);
       }
       this.loaderService.hide();
-    });
+    // });
   }
 
   selectedItem(input, name) {
-    this.displayHeading = this.cardData[input]['category'];
+    this.displayHeading = this.cardData[input]['Category'];
     this.selectedCardData = this.cardData[input]['children'];
     this.selectedTab = input;
     sessionStorage.setItem('cat', input);
@@ -87,7 +95,7 @@ export class SubcatagoryComponent implements OnInit {
 
   goToReports(input) {
     this.router.navigateByUrl('/reports');
-    sessionStorage.setItem('subCat', this.selectedCardData[input]['subcategory']);
+    sessionStorage.setItem('subCat', this.selectedCardData[input]['SubCategory']);
   }
 
   goBack() {

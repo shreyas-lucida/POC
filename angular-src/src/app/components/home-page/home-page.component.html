@@ -18,13 +18,13 @@
         <div class="container-fluid my-2">
             <div class="row mx-auto w-100 my-5 pl-2">
                 <div class="card card-details my-2 mx-2" *ngFor="let cardItem of cardData;let i = index"
-                    (click)="goToReports(i, cardItem.category)">
+                    (click)="goToReports(i, cardItem.Category)">
                     <div class="row card-blue d-block w-100 mx-auto p-2">
                         <i class="fa fa-users fa-2x text-center mx-auto d-block mb-3 mt-4" aria-hidden="true"></i>
-                        <p class="my-auto text-center mb-2">{{cardItem.category}}</p>
+                        <p class="my-auto text-center mb-2">{{cardItem.Category}}</p>
                     </div>
                     <div class="row mx-auto w-100">
-                        <p class="p-2 font-13px text-center my-3">{{cardItem.categorydescription}}</p>
+                        <p class="p-2 font-13px text-center my-3">{{cardItem.CategoryDescription}}</p>
                     </div>
                 </div>
             </div>

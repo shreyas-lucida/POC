@@ -12,8 +12,8 @@
         <div class="container-fluid my-4 border-bottom">
             <ul class="nav">
                 <li class="nav-item" *ngFor="let item of cardData; index as i">
-                    <button type="button" class="btn btn-transparent font-14px" (click)="selectedItem(i,item.category)"
-                        [ngClass]="{'border-bottom-custom': i === selectedTab }">{{item.category}}</button>
+                    <button type="button" class="btn btn-transparent font-14px" (click)="selectedItem(i,item.Category)"
+                        [ngClass]="{'border-bottom-custom': i === selectedTab }">{{item.Category}}</button>
                 </li>
                 
             </ul>
@@ -22,16 +22,16 @@
             <div class="row mx-auto w-100">
                 <div class="card card-details my-4 mr-auto" *ngFor="let item of selectedCardData; index as i">
                     <div class="row card-blue d-flex w-100 mx-auto p-2">
-                        <p class="w-75 my-auto">{{item.subcategory}}</p>
+                        <p class="w-75 my-auto">{{item.SubCategory}}</p>
                         <span class="ml-auto d-flex">
                             <img class="my-auto" src="../../../assets/chart.png">
                         </span>
                         <p class="type-box">
-                            {{item.subcategorytype}}
+                            {{item.SubCategoryType}}
                         </p>
                     </div>
                     <div class="row mx-auto my-auto w-100">
-                        <p class="p-2 font-15px text-center mt-3">{{item.subcategorydescription}}</p>
+                        <p class="p-2 font-15px text-center mt-3">{{item.SubCategoryDescription}}</p>
                     </div>
                     <div class="row mx-auto w-100 my-auto mb-3">
                         <div class="col-12 d-flex my-1">

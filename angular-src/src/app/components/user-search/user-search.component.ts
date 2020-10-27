@@ -9,6 +9,7 @@ import { AppService, AuthService, ApiService } from '../../core/services';
 import { animate, style, transition, trigger } from '@angular/animations';
 import _ from 'lodash';
 import { LoaderService } from '../providers/loaderService';
+import { SharedService } from '../../shared/shared.service';
 
 @Component({
   selector: 'app-user-search',
@@ -44,6 +45,7 @@ export class UserSearchComponent implements OnInit {
     private router: Router,
     private appService: AppService,
     private toastService: ToastrService,
+    private sharedService: SharedService,
     private authService: AuthService,
     private apiService: ApiService,
     private _location: Location,
@@ -67,21 +69,27 @@ export class UserSearchComponent implements OnInit {
   }
   pocTest1(): void {
     this.loaderService.show();
-    this.apiService.testPOC().subscribe(data => {
-      if (data.status === 'ok') {
-        let TestData =data.data['card'][0]
+    // this.apiService.testPOC().subscribe(data => {
+      if (this.sharedService.excelData) {
+        // let TestData =data.data['card'][0]
+        let TestData =this.sharedService.excelData
         TestData.forEach((element, i) => {
-          if (element.category.length === 0) {
-            element.category = TestData[i - 1]['category'];
+          if (element.Category.length === 0) {
+            element.Category = TestData[i - 1]['Category'];
           }
-          if (element.subcategory.length === 0) {
-            element.subcategory = TestData[i - 1]['subcategory'];
+          if (element.SubCategory.length === 0) {
+            element.SubCategory = TestData[i - 1]['SubCategory'];
           }
         });
         this.users = TestData;
+      } else {
+        this.sharedService.readExcel()
+        setTimeout(() => {
+          this.pocTest1()
+        }, 2000);
       }
       this.loaderService.hide();
-    });
+    // });
   }
 
   logout(): void {
@@ -105,7 +113,7 @@ export class UserSearchComponent implements OnInit {
     let value = this.searchValue.toLowerCase()
     let filteredData = [] as any
     this.users.map((data: any) => {
-      if (data.reportsname.toLowerCase().indexOf(value) !== -1 || data.reportsdescription.toLowerCase().indexOf(value) !== -1 || value === '') {
+      if (data.ReportsName.toLowerCase().indexOf(value) !== -1 || data.ReportsDescription.toLowerCase().indexOf(value) !== -1 || value === '') {
         filteredData.push(data);
       }
     });

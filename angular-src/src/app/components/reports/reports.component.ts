@@ -9,6 +9,7 @@ import { AppService, AuthService, ApiService } from '../../core/services';
 import { animate, style, transition, trigger } from '@angular/animations';
 import _ from 'lodash';
 import { LoaderService } from '../providers/loaderService';
+import { SharedService } from '../../shared/shared.service';
 
 @Component({
   selector: 'app-reports',
@@ -46,6 +47,7 @@ export class ReportsComponent implements OnInit {
     private toastService: ToastrService,
     private authService: AuthService,
     private apiService: ApiService,
+    private sharedService: SharedService,
     private _location: Location,
     private loaderService: LoaderService
 
@@ -80,24 +82,30 @@ export class ReportsComponent implements OnInit {
 
   pocTest1(): void {
     this.loaderService.show();
-    this.apiService.testPOC().subscribe(data => {
-      if (data.status === 'ok') {
-        let dataFromSheet = data.data['card'][0];
+    // this.apiService.testPOC().subscribe(data => {
+    if (this.sharedService.excelData) {
+      // let dataFromSheet = data.data['card'][0];
+      let dataFromSheet = this.sharedService.excelData;
 
-        let result = this.groupBy(dataFromSheet, function (item) {
-          return [item.category, item.subcategory];
-        });
-        console.log(result)
-        result.forEach(element => {
-          if (element[0]['category'] === this.selectedCatName && element[0]['subcategory'] === this.selectedSubCat) {
-            this.cardData = element;
-          }
-        });
-        this.users = this.cardData;
-        this.search();
-      }
-      this.loaderService.hide();
-    });
+      let result = this.groupBy(dataFromSheet, function (item) {
+        return [item.Category, item.SubCategory];
+      });
+      console.log(result)
+      result.forEach(element => {
+        if (element[0]['Category'] === this.selectedCatName && element[0]['SubCategory'] === this.selectedSubCat) {
+          this.cardData = element;
+        }
+      });
+      this.users = this.cardData;
+      this.search();
+    } else {
+      this.sharedService.readExcel()
+      setTimeout(() => {
+        this.pocTest1()
+      }, 2000);
+    }
+    this.loaderService.hide();
+    // });
   }
 
   goToLink(input) {
@@ -125,7 +133,7 @@ export class ReportsComponent implements OnInit {
     let value = this.searchValue.toLowerCase()
     let filteredData = [] as any
     this.users.map((data: any) => {
-      if (data.reportsname.toLowerCase().indexOf(value) !== -1 || data.reportsdescription.toLowerCase().indexOf(value) !== -1 || value === '') {
+      if (data.ReportsName.toLowerCase().indexOf(value) !== -1 || data.ReportsDescription.toLowerCase().indexOf(value) !== -1 || value === '') {
         filteredData.push(data);
       }
     });
