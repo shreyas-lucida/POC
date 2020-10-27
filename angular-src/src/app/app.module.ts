@@ -13,7 +13,7 @@ import { ReportsComponent } from './components/reports/reports.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { HomePageComponent } from './components/home-page/home-page.component';
 import { SpinnerComponent } from './components/spinner/spinner.component';
-
+import { settingsComponent } from './components/settings/settings.component'
 import { UserSearchComponent } from './components/user-search/user-search.component';
 import { CoreModule } from './core/core.module';
 import { SharedModule } from './shared/shared.module';
@@ -86,6 +86,11 @@ const routes: Route[] = [
     path: 'home',
     component: HomePageComponent,
     // canActivate: [MsalGuard]
+  },
+  {
+    path: 'settings',
+    component: settingsComponent,
+    // canActivate: [MsalGuard]
   }
 ];
 
@@ -99,6 +104,7 @@ const routes: Route[] = [
     SidebarComponent,
     HomePageComponent,
     SpinnerComponent,
+    settingsComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'app-root' }),

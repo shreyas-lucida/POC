@@ -5,10 +5,11 @@ import { Injectable } from '@angular/core';
 
 import { ActionResponse, LoginActionResponse, UserProfile } from '../../../../../shared/models';
 import { environment } from '../../../environments/environment';
-
+import * as XLSX from 'xlsx';
 @Injectable()
 export class ApiService {
   activeCategory;
+  excelData: any;
   constructor(private httpService: HttpClient) {
     this.activeCategory = new BehaviorSubject(null);
   }
@@ -71,4 +72,5 @@ export class ApiService {
   getCategory() {
     return this.activeCategory.asObservable();
   }
+  
 }

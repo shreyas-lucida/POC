@@ -12,7 +12,7 @@ export class SidebarComponent implements OnInit {
     // {title: 'graph', icons: 'fa fa-chart-bar'},
     // {title: 'appointments', icons: 'fa fa-calendar-day'},
     {title: 'enquiries', icons: 'fa fa-search', path: '/reports-search'},
-    {title: 'settings', icons: 'fa fa-cog'},
+    {title: 'settings', icons: 'fa fa-cog', path: '/settings'},
   ];
   isSideBarOpen = false;
   activeIndex: number = null;
