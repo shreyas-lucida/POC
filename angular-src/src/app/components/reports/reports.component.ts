@@ -28,10 +28,12 @@ import { SharedService } from '../../shared/shared.service';
     ),
     trigger('flipState', [
       state('active', style({
-        transform: 'rotateY(179deg)'
+        transform: 'rotateY(179deg)',
+        zIndex: 999
       })),
       state('inactive', style({
-        transform: 'rotateY(0)'
+        transform: 'rotateY(0)',
+        zIndex: 2
       })),
       transition('active => inactive', animate('600ms ease-out')),
       transition('inactive => active', animate('600ms ease-in'))
@@ -74,6 +76,7 @@ export class ReportsComponent implements OnInit {
   }
   ngOnInit() {
     this.pocTest1();
+    this.onClickBack();
   }
 
   groupBy(array, f) {
