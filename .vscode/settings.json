@@ -22,5 +22,12 @@
     "editor.codeActionsOnSave": {
         "source.fixAll.eslint": true,
     },
-    "eslint.validate": ["typescript", "javascript"]
+    "eslint.validate": [
+        "typescript",
+        "javascript"
+    ],
+    "appService.zipIgnorePattern": [
+        "node_modules{,/**}",
+        ".vscode{,/**}"
+    ]
 }

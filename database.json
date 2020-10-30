@@ -1,0 +1,36 @@
+{
+    "defaultEnv": "dev",
+    "dev": {
+        "host": "server_ip",
+        "database": "db_name",
+        "driver": "mysql",
+        "multipleStatements": true,
+        "user": "dbuser_name",
+        "password": "db_password"
+    },
+    "sql-file": true,
+    "qa": {
+        "host": "",
+        "database": "",
+        "driver": "mysql",
+        "multipleStatements": true,
+        "user": "",
+        "password": ""
+    },
+    "production": {
+        "host": "",
+        "database": "",
+        "driver": "mysql",
+        "multipleStatements": true,
+        "user": "",
+        "password": ""
+    },
+    "uat": {
+        "host": "",
+        "database": "",
+        "driver": "mysql",
+        "multipleStatements": true,
+        "user": "",
+        "password": ""
+    }
+}

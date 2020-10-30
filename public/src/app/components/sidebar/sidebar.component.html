@@ -1,0 +1,27 @@
+<div id="mySidepanel" class="sidepanel" [ngClass]="{'isSideBarOpen':isSideBarOpen === true ? true : false}">
+  <a href="javascript:void(0)" class="closebtn" (click)="isSideBarOpen = false">×</a>
+  <div class="notify">
+    <img src="../assets/Notifications.svg" alt="notify">
+  </div>
+  <div class="row">
+    <div class="col-md-8">
+      <span>Hello,</span> <br>
+      <span class="userName" *ngIf="name">{{name}}</span> <span class="userName" *ngIf="!name">Abhi</span>
+      <br>
+      <!-- <p class="user-bio">Copy your bio link and paste it in your profile to let people find you.</p> -->
+    </div>
+    <div class="col-md-4">
+      <img src="../assets/user.svg" alt="">
+    </div>
+  </div>
+</div>
+
+<div class="sidenav">
+  <div class="open-panal-btn">
+    <i class="fa fa-bars" aria-hidden="true" (click)="isSideBarOpen = true"></i>
+  </div>
+  <div class="sidebarIcon" *ngFor="let item of sidebarItems; let ind = index" (click)="selecteByRoute(item, ind)"
+    [class.active]="activeIndex === ind">
+    <i class={{item.icons}}></i>
+  </div>
+</div>

@@ -1,0 +1,22 @@
+{
+  "extends": "./tsconfig.app.json",
+  "compilerOptions": {
+    "outDir": "../out-tsc/app",
+    "types": [
+      "node"
+    ],    "target": "es2016",
+    "paths": {
+      "core-js/es7/reflect": [
+          "node_modules/core-js/proposals/reflect-metadata"
+      ]
+  }
+,
+  },
+  "angularCompilerOptions": {
+    "entryModule": "app/app.server.module#AppServerModule"
+  },
+  "files": [
+    "main.server.ts",
+    "../server.ts"
+  ]
+}
