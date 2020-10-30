@@ -39,7 +39,39 @@
         }
     }
 }
-
+.p-3rem {
+    padding: 0rem 3rem !important;
+}
+@media (max-width: 851px) { 
+    .p-3rem {
+        padding: 0rem 0rem !important;
+    }
+}
+@media (max-width: 767px) {
+     .cartoon-image  {
+        display: none;
+    }
+    .top-card  {
+        margin: 0rem 1rem !important;
+        span {
+            font-size: 38px !important;
+            top: 1rem !important;
+        }
+    }
+    .logo-top { display: none;}
+    .p-3rem {
+        padding: 0rem 0rem !important;
+    }
+    .container-fluid {
+        padding-left: 0px;
+        padding-right: 0px;
+    }
+}
+@media (min-width: 768px) and (max-width: 1024px) { 
+    .cartoon-image  {
+        display: none;
+    }
+}
 .color-blue {
     color: #001cb0;
 }

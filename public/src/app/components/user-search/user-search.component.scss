@@ -4,9 +4,21 @@
     -ms-transform: translateY(-50%);
     position: absolute;
     width: 75%;
+    margin-top: 6rem;
     padding: 13rem;
     margin: 7rem;
 }
+
+@media (max-width: 851px) { 
+  .search-model{
+    position: relative;
+      width: 75%;
+      margin-top: 6rem;
+      padding: 0rem;
+    margin: 0rem;
+  }
+}
+
 
 .card-details {
   width: 290px;

@@ -1,23 +1,27 @@
 <div class="container-fluid p-0 d-flex">
     <app-sidebar></app-sidebar>
 
-    <div class="container-fluid px-5">
+    <div class="container-fluid">
         <div class="container-fluid">
             <div class="top-card">
                 <div class="row w-100 mx-auto d-flex p-2">
-                    <p class="my-auto ml-3">{{selectedSubCat}} Report</p>
-                    <img class="ml-auto logo-top" src="../../../assets/logo.png">
+                    <div class="col-sm-12 col-md-8 col-lg-8 col-xl-8">
+                        <p class="my-auto ml-3">{{selectedSubCat}} Report</p>
+                    </div>
+                    <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4">
+                        <img class="ml-auto logo-top float-right" src="../../../assets/logo.png">
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="container-fluid d-flex">
+        <div class="container-fluid ">
             <div class="row mx-auto my-4 w-100">
                 <button type="button" class="btn btn-transparent mr-3 font-14px"
                     (click)="goBack()">{{selectedSubCat}}</button>
                 <button type="button" class="btn btn-transparent border-bottom-custom font-14px">{{selectedSubCat}}
                     Report</button>
             </div>
-            <div class="search float-right w-25 my-auto">
+            <div class="search float-right my-auto">
                 <i class="fa fa-search icon"></i>
                 <input class="w-100" placeholder="Search" [(ngModel)]="searchValue" (ngModelChange)="search()">
             </div>

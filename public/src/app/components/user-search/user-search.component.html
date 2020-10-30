@@ -2,7 +2,7 @@
     <app-sidebar></app-sidebar>
 
     <div class="container-fluid px-5" *ngIf="isSearch">
-        <div class="search search-model">
+        <div class="search search-model mx-auto">
             <i class="fa fa-search icon"></i>
             <input class="w-100" placeholder="Search report" (change)="globalSearch($event.target.value)" autofocus>
         </div>

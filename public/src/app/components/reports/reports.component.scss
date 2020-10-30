@@ -43,6 +43,17 @@
     }
 }
 
+@media (max-width: 767px) {
+    .cartoon-image  {
+       display: none;
+   }
+   .top-card  {
+       span {
+           font-size: 38px !important;
+       }
+   }
+   .logo-top { display: none;}
+}
 .color-blue {
     color: #001cb0;
 }

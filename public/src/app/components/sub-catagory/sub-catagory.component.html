@@ -1,11 +1,15 @@
 <div class="container-fluid p-0 d-flex">
     <app-sidebar></app-sidebar>
-    <div class="container-fluid p-0 px-5">
+    <div class="container-fluid p-0 p-3rem">
         <div class="container-fluid">
             <div class="top-card">
                 <div class="row w-100 mx-auto d-flex p-3">
-                    <p class="my-auto ml-3">{{displayHeading}}</p>
-                    <img class="ml-auto logo-top" src="../../../assets/logo.png">
+                    <div class="col-sm-12 col-md-9 col-lg-9">
+                        <p class="my-auto ml-3">{{displayHeading}}</p>
+                    </div>
+                    <div class="col-sm-12 col-md-3 col-lg-3">
+                        <img class="ml-auto logo-top float-right" src="../../../assets/logo.png">
+                    </div>
                 </div>
             </div>
         </div>
@@ -20,7 +24,7 @@
         </div>
         <div class="container-fluid my-2">
             <div class="row mx-auto w-100">
-                <div class="card card-details my-4 mr-auto" *ngFor="let item of selectedCardData; index as i">
+                <div class="card card-details my-4 mx-auto" *ngFor="let item of selectedCardData; index as i">
                     <div class="row card-blue d-flex w-100 mx-auto p-2">
                         <p class="w-75 my-auto">{{item.ORGUNITL3}}</p>
                         <span class="ml-auto d-flex">

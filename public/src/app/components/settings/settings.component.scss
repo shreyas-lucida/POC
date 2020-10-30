@@ -160,6 +160,11 @@ input[type="file"] {
   display: none;
 }
 
+@media (max-width: 851px) { 
+  .custom-file-upload {
+    width: auto;
+  }
+}
 .custom-file-upload {
   border: 1px solid #ccc;
   display: inline-block;
