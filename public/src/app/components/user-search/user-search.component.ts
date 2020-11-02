@@ -85,14 +85,14 @@ export class UserSearchComponent implements OnInit {
     if (this.sharedService.excelData) {
       // let TestData =data.data['card'][0]
       let TestData = this.sharedService.excelData
-      TestData.forEach((element, i) => {
-        if (element['ORGUNITL2'].length === 0) {
-          element['ORGUNITL2'] = TestData[i - 1]['ORGUNITL2'];
-        }
-        if (element['ORGUNITL3'].length === 0) {
-          element['ORGUNITL3'] = TestData[i - 1]['ORGUNITL3'];
-        }
-      });
+      // TestData.forEach((element, i) => {
+      //   if (element['ORGUNITL2'].length === 0) {
+      //     element['ORGUNITL2'] = TestData[i - 1]['ORGUNITL2'];
+      //   }
+      //   if (element['ORGUNITL3'].length === 0) {
+      //     element['ORGUNITL3'] = TestData[i - 1]['ORGUNITL3'];
+      //   }
+      // });
       this.users = TestData;
     } else {
       this.sharedService.readExcel()

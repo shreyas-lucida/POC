@@ -13,22 +13,22 @@
                 </div>
             </div>
         </div>
-        <div class="container-fluid my-4 border-bottom">
-            <ul class="nav px-2">
-                <li class="nav-item" *ngFor="let item of cardData; index as i">
+        <div class="container my-4 border-bottom scroller">
+            <ul class="scrolling-wrapper">
+                <li class="card-scroll" *ngFor="let item of cardData; index as i">
                     <button type="button" class="btn btn-transparent font-14px" (click)="selectedItem(i,item.ORGUNITL2)"
                         [ngClass]="{'border-bottom-custom': i === selectedTab }">{{item.ORGUNITL2}}</button>
                 </li>
-                
+
             </ul>
         </div>
         <div class="container-fluid my-2">
             <div class="row mx-auto w-100">
-                <div class="card card-details my-4 mx-auto" *ngFor="let item of selectedCardData; index as i">
+                <div class="card card-details my-4 mx-2" *ngFor="let item of selectedCardData; index as i">
                     <div class="row card-blue d-flex w-100 mx-auto p-2">
                         <p class="w-75 my-auto">{{item.ORGUNITL3}}</p>
                         <span class="ml-auto d-flex">
-                            <img class="my-auto" src="../../../assets/chart.png">
+                            <!-- <img class="my-auto" src="../../../assets/chart.png"> -->
                         </span>
                         <p class="type-box">
                             {{item.ORGUNITL3TYPE}}
@@ -39,7 +39,7 @@
                     </div>
                     <div class="row mx-auto w-100 my-auto mb-3">
                         <div class="col-12 d-flex my-1">
-                            <button class="btn btn-blue mx-auto" (click)="goToReports(i)">Access</button>
+                            <button class="btn btn-blue mx-auto" (click)="goToReports(i)">Access Report</button>
                         </div>
                     </div>
                 </div>

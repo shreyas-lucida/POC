@@ -45,6 +45,7 @@
     "cors": "~2.8.4",
     "express": "^4.15.2",
     "jquery": "^3.5.1",
+    "jwt-decode": "^3.0.0",
     "msal": "^1.4.2",
     "ngx-cookie": "^4.0.2",
     "ngx-toastr": "^11.3.3",

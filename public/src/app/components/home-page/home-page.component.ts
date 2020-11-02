@@ -5,6 +5,7 @@ import { ApiService } from '../../core/services/api.service';
 import { LoaderService } from '../providers/loaderService';
 import * as XLSX from 'xlsx';
 import { SharedService } from '../../shared/shared.service';
+import { MsalService } from '@azure/msal-angular';
 
 @Component({
   selector: 'app-home-page',
@@ -18,7 +19,8 @@ export class HomePageComponent implements OnInit {
     private router: Router,
     private apiService: ApiService,
     private sharedService: SharedService,
-    private loaderService: LoaderService) {
+    private loaderService: LoaderService,
+    private _msalService: MsalService) {
   }
   ngOnInit(): void {
     sessionStorage.removeItem("cat");
@@ -27,12 +29,14 @@ export class HomePageComponent implements OnInit {
     localStorage.removeItem("result");
     this.getData();
   }
+
+
+
   getData(): void {
     this.loaderService.show();
     // this.apiService.testPOC().subscribe(data => {
     if (this.sharedService.refrenceData) {
       let dataFromSheet = this.sharedService.refrenceData;
-      console.log(dataFromSheet)
       let arr = [];
       dataFromSheet.forEach(element => {
         if (element['ORGUNITL2'] && element['L2Description']) {
