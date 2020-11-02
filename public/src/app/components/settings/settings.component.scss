@@ -160,9 +160,19 @@ input[type="file"] {
   display: none;
 }
 
+@media (max-width: 420px) { 
+  .logo-top {
+    width: auto !important;
+    height: 70px !important;
+  }
+}
+
 @media (max-width: 851px) { 
   .custom-file-upload {
-    width: auto;
+    width: auto !important;
+  }
+  .logo-top {
+    width: auto !important;
   }
 }
 .custom-file-upload {

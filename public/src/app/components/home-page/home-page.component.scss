@@ -53,9 +53,11 @@
     }
     .top-card  {
         margin: 0rem 1rem !important;
+        height: auto !important;
         span {
             font-size: 38px !important;
-            top: 1rem !important;
+            top: 0rem !important;
+            position: relative !important;
         }
     }
     .logo-top { display: none;}

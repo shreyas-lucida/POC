@@ -14,7 +14,7 @@
             </div>
         </div>
         <div class="container-fluid my-4 border-bottom">
-            <ul class="nav">
+            <ul class="nav px-2">
                 <li class="nav-item" *ngFor="let item of cardData; index as i">
                     <button type="button" class="btn btn-transparent font-14px" (click)="selectedItem(i,item.ORGUNITL2)"
                         [ngClass]="{'border-bottom-custom': i === selectedTab }">{{item.ORGUNITL2}}</button>
