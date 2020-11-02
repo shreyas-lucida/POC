@@ -3,13 +3,13 @@ import * as fs from 'fs';
 const path = require("path");
 const PUBLIC_STORAGE_BASE = 'public/documents/';
 const multer = require('multer');
-// var upload = multer({dest:'public/src/assets/excel'}); //local
-var upload = multer({dest:'uploads/'}); //server
+var upload = multer({dest:'public/src/assets/excel'}); //local
+// var upload = multer({dest:'uploads/'}); //server
 
 var storage = multer.diskStorage({
     destination: function(req, file, cb) {
-        // cb(null, './public/src/assets/excel'); //local
-        cb(null, './uploads/'); //server
+        cb(null, './public/src/assets/excel'); //local
+        // cb(null, './uploads/'); //server
 
      },
     filename: function (req, file, cb) {

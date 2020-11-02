@@ -9,9 +9,9 @@ export const environment = {
   // authority: 'https://login.microsoftonline.com/1ca6df86-6785-4ffe-8dd3-b0c8527f33cc/',
   // redirectUrl: 'https://cm3dapp.azurewebsites.net/home'
   apiServer: 'http://localhost:3000',
-  clientId: '8c07b072-769b-4644-bc93-396ea8f60dda',
-  authority: 'https://login.microsoftonline.com/af23612e-ff6b-4828-9293-0b2542fff338/',
-  redirectUrl: 'http://localhost:4200/#/home'
+  clientId: '6fbedafe-19cb-45e2-be2b-58f924c0eb9b',
+  authority: 'https://login.microsoftonline.com/1ca6df86-6785-4ffe-8dd3-b0c8527f33cc/',
+  redirectUrl: 'http://localhost:4200/home'
 };
 
 /*
