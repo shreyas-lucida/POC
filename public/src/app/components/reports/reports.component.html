@@ -28,10 +28,10 @@
         </div>
 
 
-        <div class="container-fluid px-4" *ngIf=" cardData && cardData.length > 0">
-            <div class="row mx-auto w-100 px-5">
+        <div class="container-fluid " *ngIf=" cardData && cardData.length > 0">
+            <div class="row w-100">
                 <div class="tp-wrapper" *ngFor="let cardItem of cardData;let i =index">
-                    <div class="card  tp-box card-details report-card my-3 mx-2" *ngIf="seeMore || i < 8" [@myAnimation]="seeMore"
+                    <div class="card  tp-box card-details report-card my-3 mx-1" *ngIf="seeMore || i < 8" [@myAnimation]="seeMore"
                         [@flipState]="cardItem.flip">
                         <div class="modal-content" *ngIf="selectedItem === cardItem"
                             [ngClass]="{'tp-box__side tp-box__back': cardItem.flip === 'active' ? true : false}">
