@@ -43,7 +43,14 @@
     }
 }
 
+.cards-container {
+    margin: 0rem auto;
+  }
+
 @media (max-width: 767px) {
+    .cards-container {
+        margin: -1rem !important;
+      }
     .cartoon-image  {
        display: none;
    }

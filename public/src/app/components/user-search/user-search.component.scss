@@ -8,8 +8,13 @@
     padding: 13rem;
     margin: 7rem;
 }
-
+.cards-container {
+  margin: 0rem auto;
+}
 @media (max-width: 851px) { 
+  .cards-container {
+    margin: -1rem !important;
+  }
   .search-model{
     position: relative;
       width: 75%;

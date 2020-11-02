@@ -29,7 +29,7 @@
 
 
         <div class="container-fluid " *ngIf=" cardData && cardData.length > 0">
-            <div class="row w-100">
+            <div class="row w-100 cards-container">
                 <div class="tp-wrapper" *ngFor="let cardItem of cardData;let i =index">
                     <div class="card  tp-box card-details report-card my-3 mx-1" *ngIf="seeMore || i < 8" [@myAnimation]="seeMore"
                         [@flipState]="cardItem.flip">

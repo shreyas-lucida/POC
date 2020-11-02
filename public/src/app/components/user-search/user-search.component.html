@@ -12,7 +12,7 @@
             <div class="top-card">
                 <div class="row w-100 mx-auto d-flex p-2">
                     <p class="my-auto ml-3">Reports</p>
-                    <img class="ml-auto logo-top" src="../../../assets/logo.png">
+                    <img class="float-right ml-auto my-auto" src="../../../assets/logo.png">
                 </div>
             </div>
         </div>
@@ -30,7 +30,7 @@
         </div>
 
         <div class="container-fluid">
-            <div class="row w-100">
+            <div class="row w-100 cards-container">
                 <div class="tp-wrapper" *ngFor="let cardItem of cardData;let i =index">
                     <div class="card  tp-box card-details my-3 mx-1" *ngIf="seeMore || i < 8" [@myAnimation]="seeMore"
                         [@flipState]="cardItem.flip">
