@@ -29,7 +29,7 @@
 
 
         <div class="container-fluid " *ngIf=" cardData && cardData.length > 0">
-            <div class="row w-100 padding-for-large-screens">
+            <div class="row w-100 padding-for-large-screens-reports">
                 <div class="tp-wrapper" *ngFor="let cardItem of cardData;let i =index">
                     <div class="card  tp-box card-details report-card my-3 mx-1" *ngIf="seeMore || i < 8"
                         [@myAnimation]="seeMore" [@flipState]="cardItem.flip">
@@ -40,11 +40,10 @@
                                     <p class="w-75 header font-weight-700 font-20px my-auto">
                                         {{selectedItem.REPORTNAME}}</p>
                                     <span class="ml-auto">
-                                        <!-- <img src="../../../assets/chart.png"> -->
                                         <img class="icon-class" *ngIf="selectedItem.REPORTINGTOOL === 'PDF'"
                                             src="../../../assets/pdf.png">
                                         <img class="icon-class" *ngIf="selectedItem.REPORTINGTOOL === 'Power BI'"
-                                            src="../../../assets/power-bi.png">
+                                            src="../../../assets/power-bi.svg">
                                         <img class="icon-class" *ngIf="selectedItem.REPORTINGTOOL === 'Powerpoint'"
                                             src="../../../assets/excel-icon.png">
                                     </span>
@@ -84,7 +83,7 @@
                                     <img class="icon-class" *ngIf="cardItem.REPORTINGTOOL === 'PDF'"
                                         src="../../../assets/pdf-color.png">
                                     <img class="icon-class" *ngIf="cardItem.REPORTINGTOOL === 'Power BI'"
-                                        src="../../../assets/chart.png">
+                                        src="../../../assets/power-bi.svg">
                                     <img class="icon-class" *ngIf="cardItem.REPORTINGTOOL === 'Powerpoint'"
                                         src="../../../assets/powerpoint-color.png">
                                 </span>
