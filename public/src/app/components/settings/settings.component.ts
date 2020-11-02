@@ -8,7 +8,10 @@ import * as XLSX from 'xlsx';
 import { SharedService } from '../../shared/shared.service';
 import { Router } from '@angular/router';
 import { ApiService } from '../../core/services/api.service';
+import { LoaderService } from '../providers/loaderService';
 const uploadURL = '../../../assets/excel';
+import { MsalService } from '@azure/msal-angular';
+
 @Component({
   selector: 'app-user-search',
   templateUrl: './settings.component.html',
@@ -20,19 +23,32 @@ export class settingsComponent implements OnInit {
   refrenceData: any;
   excelData: any;
   uploadedFileToSend: any;
+  isAdmin = false;
   constructor(
     private _location: Location,
     private sharedService: SharedService,
     private router: Router,
     private http: HttpClient,
-    private apiService: ApiService
-  ) { }
+    private apiService: ApiService,
+    private loaderService: LoaderService,
+    private _msalService: MsalService
+  ) { this.getAuthDetails(); }
   ngOnInit() {
-
   }
 
   goBack() {
     this._location.back();
+  }
+
+  getAuthDetails() {
+    const account = (this._msalService.getAccount().idToken as any).roles;
+    let isAdmin = account.find(element => element === "Admin")
+    if (isAdmin === "Admin") {
+      this.isAdmin = true;
+    } else {
+      this.isAdmin = false;
+    }
+
   }
 
   uploadedFile(event) {
@@ -79,16 +95,20 @@ export class settingsComponent implements OnInit {
     readFile.readAsArrayBuffer(fileUploaded);
   }
   readAsJson() {
+    if (this.uploadedFileToSend) {
+      this.loaderService.show();
 
-    setTimeout(() => {
-      const formData = new FormData();
-      formData.append('file', this.uploadedFileToSend);
-      this.apiService.uploadFile(formData).subscribe(data => {
-      })
-      this.sharedService.excelData = this.excelData;
-      this.sharedService.refrenceData = this.refrenceData;
-      this.router.navigateByUrl('/home');
-    }, 3000);
+      setTimeout(() => {
+        const formData = new FormData();
+        formData.append('file', this.uploadedFileToSend);
+        this.apiService.uploadFile(formData).subscribe(data => {
+        });
+        this.sharedService.excelData = this.excelData;
+        this.sharedService.refrenceData = this.refrenceData;
+        this.router.navigateByUrl('/home');
+      }, 3000);
+      this.loaderService.hide();
 
+    }
   }
 }
