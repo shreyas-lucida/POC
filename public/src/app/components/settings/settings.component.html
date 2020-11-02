@@ -1,6 +1,6 @@
 <div class="container-fluid p-0 d-flex">
     <app-sidebar></app-sidebar>
-    <div class="container-fluid px-5">
+    <div class="container-fluid px-2" *ngIf="isAdmin === true">
         <div class="container-fluid">
             <div class="top-card">
                 <div class="row w-100 mx-auto d-flex p-2">
@@ -21,21 +21,26 @@
             <!-- <div class="row d-block"> -->
             <div class="col-md-12">
                 <div class="custom-file">
-                    <label for="file-upload" class="custom-file-upload d-flex mx-auto">
+                    <label for="file-upload" class="custom-file-upload d-flex mx-auto w-auto">
                         <span class="mx-auto my-auto">
-                            <img class="mx-auto" src="../../../assets/upload.png">
-                            <p class="text-center">Choose File</p>
+                            <img class="mx-auto d-block" src="../../../assets/upload.png">
+                            <p class="text-center mb-0">Choose File</p>
+                            <p class="text-center font-12px" *ngIf="uploadedFileToSend === undefined">Supported format xlxs</p>
+                            <p class="text-center font-12px" *ngIf="uploadedFileToSend !== undefined">
+                                {{uploadedFileToSend.name}}</p>
                         </span>
                     </label>
                     <input id="file-upload" type="file" name="myfile" (change)="uploadedFile($event)"
                         accept=".xlsx, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet', 'application/vnd.ms-excel" />
                 </div>
-            </div>
-            <hr>
-            <div class="col-mx-12 d-flex">
-                <button class="btn btn-primary mx-auto" type="submit" (click)="readAsJson()">Upload</button>
+                <button class="btn btn-blue mx-auto disabled-btn d-block" *ngIf="uploadedFileToSend === undefined" disabled
+                    type="submit" (click)="readAsJson()">Upload</button>
+                <button class="btn btn-blue mx-auto d-block" *ngIf="uploadedFileToSend !== undefined" type="submit"
+                    (click)="readAsJson()">UPLOAD</button>
             </div>
         </div>
-        <!-- </div> -->
+    </div>
+    <div class="container-fluid px-2 d-flex" *ngIf="isAdmin === false">
+        <p class="mx-auto my-auto text-center">No Access</p>
     </div>
 </div>

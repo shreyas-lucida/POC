@@ -43,6 +43,29 @@ body {
     outline: none;
 }
 
+.scrolling-wrapper {
+    &::-webkit-scrollbar {
+        width: 5px;
+        height: 2px;
+    }
+
+    /* Track */
+    &::-webkit-scrollbar-track {
+        background: #001cb0;
+        border-radius: 50px;
+    }
+
+    /* Handle */
+    &::-webkit-scrollbar-thumb {
+        background: #7a7cab;
+        border-radius: 50px;
+    }
+
+    /* Handle on hover */
+    &::-webkit-scrollbar-thumb:hover {
+        background: #7a7cab;
+    }
+}
 .site_wrapper {
     min-height: 100%;
     height: auto !important;
@@ -57,8 +80,8 @@ body {
 .btn-grey {
     width: 119px;
     height: 30px;
-    background: #BBC5D5;
-    color: #322A7D;
+    background: #bbc5d5;
+    color: #322a7d;
     border-radius: 7px;
     text-transform: capitalize;
     font-size: 12px;
@@ -106,15 +129,15 @@ body {
 
 .btn-transparent {
     background: transparent;
-    color: #BBC5D5;
+    color: #bbc5d5;
     font-size: 13px;
 }
-.btn-transparent:hover{
-    color: #322A7D;
+.btn-transparent:hover {
+    color: #322a7d;
 }
 
 .border-bottom-custom {
-    color: #322A7D;
+    color: #322a7d;
     border-bottom: 3px solid #f6a623;
     border-radius: 0;
     font-weight: bold;
@@ -123,19 +146,66 @@ body {
 .btn {
     box-shadow: none !important;
 }
-.search{
-    input{
+.search {
+    input {
         font-weight: normal;
         border-radius: 8px;
         border: 2px solid #001cb0;
         height: 2.3rem;
         padding: 0.5rem;
         padding-left: 2rem;
-        color: #322A7D;
+        color: #322a7d;
     }
-    i { 
+    i {
         position: absolute;
         padding: 12px;
         color: #001cb0;
-    } 
+    }
+}
+
+.font-12px {
+    font-size: 12px;
+}
+
+.disabled-btn {
+    cursor: none;
+}
+@media only screen and (max-width: 900px) {
+    .hide-for-small-screens {
+        display: none;
+    }
+    .top-card {
+        span {
+            font-size: 30px !important;
+        }
+    }
+}
+
+@media only screen and (max-width: 500px) {
+    .hide-for-small-screens {
+        display: none;
+    }
+    .top-card {
+        display: flex;
+        img {
+            height: 50px !important;
+            width: 56px !important;
+        }
+        .logo-top{
+            margin: auto!important;
+        }
+        span {
+            font-size: 20px !important;
+        }
+        p {
+            font-size: 20px !important;
+            text-align: center!important;
+        }
+    }
+    .card-details{
+        width: 100%!important;
+    }
+    .scroller{
+        width: 300px;
+    }
 }
