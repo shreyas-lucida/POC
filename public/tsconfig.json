@@ -19,5 +19,9 @@
     {
       "path": "./e2e/tsconfig.e2e.json"
     }
-  ]
+  ],
+  "baseUrl": "src",
+    "paths": {
+      "@app/*": ["app/*"]
+    }
 }

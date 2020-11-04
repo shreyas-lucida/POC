@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import * as XLSX from 'xlsx';
-import {environment} from '../../environments/environment';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -21,7 +21,7 @@ export class SharedService {
   }
 
   readExcel() {
-    var testUrl = '../../../../uploads/CM3D_Report_Inventory.xlsx';
+    var testUrl = environment.readFileUrl;
 
     let jsonData: any;
     let refrenceJsonData: any;

@@ -1,16 +1,11 @@
 import { Request, Response } from 'express';
 import * as fs from 'fs';
-const path = require("path");
-const PUBLIC_STORAGE_BASE = 'public/documents/';
 const multer = require('multer');
-var upload = multer({ dest: '../uploads' }); //local
-// var upload = multer({dest:'uploads/'}); //server
+import { environment } from '../public/src/environments/environment'
 
 var storage = multer.diskStorage({
     destination: function (req, file, cb) {
-        cb(null, './uploads/'); //local
-        // cb(null, './uploads/'); //server
-
+        cb(null, environment.uploadFileUrl);
     },
     filename: function (req, file, cb) {
         cb(null, 'CM3D_Report_Inventory.xlsx');

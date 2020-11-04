@@ -217,4 +217,16 @@ body {
     .padding-for-large-screens-reports{
         padding: 0px 85px
     }
+    .padding-for-large-screens-reports-search{
+        padding: 0px 145px
+    }
+}
+
+.selected-header{
+    background-color: #001cb0;
+    padding: 10px;
+    border-radius: 10px;
+    p{
+        color: white!important;
+    }
 }

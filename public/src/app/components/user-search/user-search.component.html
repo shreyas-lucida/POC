@@ -1,8 +1,8 @@
 <div class="container-fluid p-0 d-flex">
     <app-sidebar></app-sidebar>
 
-    <div class="container-fluid" *ngIf="isSearch">
-        <div class="search search-model mx-auto">
+    <div class="container-fluid d-flex" *ngIf="isSearch">
+        <div class="search mx-auto my-auto w-50">
             <i class="fa fa-search icon"></i>
             <input class="w-100" placeholder="Search report" (change)="globalSearch($event.target.value)" autofocus>
         </div>
@@ -23,7 +23,7 @@
                 <button type="button" class="btn btn-transparent border-bottom-custom font-14px">
                     Report</button>
             </div>
-            <div class="search float-right  my-auto">
+            <div class="search float-right padding-for-large-screens-reports-search  my-auto">
                 <i class="fa fa-search icon"></i>
                 <input class="w-100" placeholder="Search" [(ngModel)]="searchValue" (ngModelChange)="search()">
             </div>
@@ -37,7 +37,7 @@
                         <div class="modal-content h-auto" *ngIf="selectedItem === cardItem"
                             [ngClass]="{'tp-box__side tp-box__back': cardItem.flip === 'active' ? true : false}">
                             <div class="modal-body">
-                                <div class="row d-flex w-100 mx-auto">
+                                <div class="row d-flex w-100 mx-auto selected-header">
                                     <p class="w-75 header font-weight-700 font-20px my-auto">
                                         {{selectedItem.REPORTNAME}}</p>
                                     <span class="ml-auto">
