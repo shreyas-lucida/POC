@@ -77,7 +77,7 @@
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-border w-100" (click)="onClickBack()">Back</button>
-                                <button type="button" class="btn btn-border w-100" (click)="selectedItem = ''">Access
+                                <button type="button" class="btn btn-border w-100" (click)="goToLink(selectedItem)">Access
                                     Report</button>
                             </div>
                         </div>
@@ -107,7 +107,7 @@
                                     <button type="button" class="btn btn-grey ml-auto" data-toggle="modal"
                                         data-target="#myModal" (click)="selectedCard(cardItem, i)">Find out
                                         more</button>
-                                    <button class="btn btn-blue ml-auto">Access</button>
+                                    <button class="btn btn-blue ml-auto" (click)="goToLink(cardItem)">Access</button>
                                 </div>
                             </div>
                         </div>

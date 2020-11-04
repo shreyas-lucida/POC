@@ -146,6 +146,14 @@ export class UserSearchComponent implements OnInit {
     });
     this.cardData = filteredData;
   }
+
+  goToLink(input) {
+    console.log(input)
+    if (input['REPORTLINK'].trim().length > 0) {
+      window.open(input['REPORTLINK'], "_blank");
+    }
+  }
+
   seeMoreOrLess() {
     this.seeMore = !this.seeMore;
   }

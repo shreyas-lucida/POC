@@ -122,7 +122,9 @@ export class ReportsComponent implements OnInit {
   }
 
   goToLink(input) {
-    window.open(input['REPORTLINK'], "_blank");
+    if (input['REPORTLINK'].trim().length > 0) {
+      window.open(input['REPORTLINK'], "_blank");
+    }
   }
 
   onClickBack() {
