@@ -18,8 +18,7 @@
         </div>
         <div class="container-fluid ">
             <div class="row mx-auto my-4 w-100">
-                <button type="button" class="btn btn-transparent mr-3 font-14px"
-                    (click)="goBack()">Back</button>
+                <button type="button" class="btn btn-transparent mr-3 font-14px" (click)="goBack()">Back</button>
                 <button type="button" class="btn btn-transparent border-bottom-custom font-14px">
                     Report</button>
             </div>
@@ -46,6 +45,9 @@
                                         <img class="icon-class" *ngIf="selectedItem.REPORTINGTOOL === 'Power BI'"
                                             src="../../../assets/power-bi.svg">
                                         <img class="icon-class" *ngIf="selectedItem.REPORTINGTOOL === 'Powerpoint'"
+                                            src="../../../assets/power-point.png">
+                                        <img class="icon-class"
+                                            *ngIf="selectedItem.REPORTINGTOOL === 'excel' || selectedItem.REPORTINGTOOL ===  'Excel'"
                                             src="../../../assets/excel-icon.png">
                                     </span>
                                 </div>
@@ -72,12 +74,13 @@
                                     <p class="font-11px color-purple mb-1">Stakeholders</p>
                                     <p class="font-10px">{{selectedItem.KEYSTAKEHOLDERS}}</p>
                                 </div>
-                                
+
 
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-border w-100" (click)="onClickBack()">Back</button>
-                                <button type="button" class="btn btn-border w-100" (click)="goToLink(selectedItem)">Access
+                                <button type="button" class="btn btn-border w-100"
+                                    (click)="goToLink(selectedItem)">Access
                                     Report</button>
                             </div>
                         </div>
@@ -98,6 +101,9 @@
                                         src="../../../assets/power-bi.svg">
                                     <img class="icon-class" *ngIf="cardItem.REPORTINGTOOL === 'Powerpoint'"
                                         src="../../../assets/powerpoint-color.png">
+                                    <img class="icon-class"
+                                        *ngIf="cardItem.REPORTINGTOOL === 'excel' || cardItem.REPORTINGTOOL ===  'Excel'"
+                                        src="../../../assets/excel-icon.png">
                                 </span>
                                 <p class="type-box"> {{cardItem.ORGUNITL2}} </p>
                             </div>

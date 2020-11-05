@@ -45,6 +45,9 @@
                                         <img class="icon-class" *ngIf="selectedItem.REPORTINGTOOL === 'Power BI'"
                                             src="../../../assets/power-bi.svg">
                                         <img class="icon-class" *ngIf="selectedItem.REPORTINGTOOL === 'Powerpoint'"
+                                            src="../../../assets/power-point.png">
+                                        <img class="icon-class"
+                                            *ngIf="selectedItem.REPORTINGTOOL === 'excel' || selectedItem.REPORTINGTOOL ===  'Excel'"
                                             src="../../../assets/excel-icon.png">
                                     </span>
                                 </div>
@@ -86,6 +89,9 @@
                                         src="../../../assets/power-bi.svg">
                                     <img class="icon-class" *ngIf="cardItem.REPORTINGTOOL === 'Powerpoint'"
                                         src="../../../assets/powerpoint-color.png">
+                                    <img class="icon-class"
+                                        *ngIf="cardItem.REPORTINGTOOL === 'excel' || cardItem.REPORTINGTOOL ===  'Excel'"
+                                        src="../../../assets/excel-icon.png">
                                 </span>
                                 <p class="type-box"> {{cardItem.ORGUNITL4}} </p>
                             </div>
