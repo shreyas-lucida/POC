@@ -5,7 +5,8 @@ import { environment } from '../public/src/environments/environment'
 
 var storage = multer.diskStorage({
     destination: function (req, file, cb) {
-        cb(null, environment.uploadFileUrl);
+        // cb(null, './public/src/assets/excel'); //local
+        cb(null, './assets/excel/'); //server
     },
     filename: function (req, file, cb) {
         cb(null, 'CM3D_Report_Inventory.xlsx');
