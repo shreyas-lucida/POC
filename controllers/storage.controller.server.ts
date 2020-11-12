@@ -1,7 +1,6 @@
 import { Request, Response } from 'express';
 import * as fs from 'fs';
 const multer = require('multer');
-import { environment } from '../public/src/environments/environment'
 
 var storage = multer.diskStorage({
     destination: function (req, file, cb) {

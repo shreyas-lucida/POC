@@ -1,10 +1,10 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const multer = require('multer');
-const environment_1 = require("../public/src/environments/environment");
 var storage = multer.diskStorage({
     destination: function (req, file, cb) {
-        cb(null, environment_1.environment.uploadFileUrl);
+        // cb(null, './public/src/assets/excel'); //local
+        cb(null, './assets/excel/'); //server
     },
     filename: function (req, file, cb) {
         cb(null, 'CM3D_Report_Inventory.xlsx');
